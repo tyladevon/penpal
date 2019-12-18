@@ -1,0 +1,23 @@
+require 'rails_helper'
+
+
+describe User do
+  describe 'attributes' do
+    it 'has attributes' do
+      user = User.create(first_name: 'Sarah', last_name: 'Lopp', email: 'slopp@gmail.com')
+
+      expect(user.first_name).to eq('Sarah')
+      expect(user.last_name).to eq('Lopp')
+      expect(user.email).to eq('slopp@gmail.com')
+    end
+  end
+  describe 'validations' do
+    it { should validate_presence_of :first_name }
+    it { should validate_presence_of :last_name }
+    it { should validate_presence_of :email }
+    it { should validate_uniqueness_of :email }
+  end
+
+  describe 'relationships' do
+  end
+end
