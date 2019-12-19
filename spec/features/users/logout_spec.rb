@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a registered user' do
   it 'it can log out' do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    stub_user(user)
 
     visit landing_path
 
