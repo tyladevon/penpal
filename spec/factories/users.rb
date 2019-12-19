@@ -3,7 +3,7 @@ FactoryBot.define do
     email  { Faker::Internet.email }
     first_name { Faker::Creature::Dog.name }
     last_name { Faker::Artist.name }
-    google_token { ENV['GOOGLE_TEST_TOKEN'] }
+    google_token { '123455' }
   end
 
 end

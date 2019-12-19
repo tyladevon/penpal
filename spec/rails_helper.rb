@@ -99,4 +99,11 @@ def stub_omniauth
                       refresh_token: '1242453593',
                       expires_at: DateTime.now }
           })
-  end
+end
+
+def stub_invalid_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    data: 'Bad credentials'
+    })
+end
