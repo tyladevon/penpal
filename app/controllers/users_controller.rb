@@ -4,6 +4,16 @@ class UsersController < ApplicationController
     user ? found_user_redirect(user) : setup_new_user
   end
 
+  def show
+  end
+
+  def destroy
+    User.destroy(current_user.id)
+    session.clear
+    flash[:notice] = 'Account deleted.'
+    redirect_to root_path
+  end
+
   private
 
     def found_user_redirect(user)

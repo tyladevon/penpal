@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe User do
   describe 'attributes' do
     it 'has attributes' do
@@ -11,6 +10,7 @@ describe User do
       expect(user.email).to eq('slopp@gmail.com')
     end
   end
+
   describe 'validations' do
     it { should validate_presence_of :first_name }
     it { should validate_presence_of :last_name }
@@ -20,5 +20,6 @@ describe User do
   end
 
   describe 'relationships' do
+    it { should have_many :buddies }
   end
 end
