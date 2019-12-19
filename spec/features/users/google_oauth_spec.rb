@@ -7,7 +7,6 @@ describe 'As a registered user' do
     expect(page).to have_link('Sign in with Google')
     click_link('Sign in with Google')
 
-    expect(current_path).to eq('/landing')
-    expect(page).to have_content("Welcome #{user.first_name}!")
+    expect(page).to have_content("Landing Page")
   end
 end
