@@ -13,6 +13,7 @@ class UsersController < ApplicationController
         google_token: token
       )
       if user.save
+        session[:user_id] = user.id
         flash[:success] = 'Login Successful'
         redirect_to landing_path
       else
