@@ -38,18 +38,22 @@ class UsersController < ApplicationController
     end
 
     def first_name
-      request.env['omniauth.auth']['info']['first_name']
+      f_name = request.env['omniauth.auth']['info']
+      f_name ? f_name['first_name'] : nil
     end
 
     def last_name
-      request.env['omniauth.auth']['info']['last_name']
+      l_name = request.env['omniauth.auth']['info']
+      l_name ? l_name['last_name'] : nil
     end
 
     def email
-      request.env['omniauth.auth']['info']['email']
+      email = request.env['omniauth.auth']['info']
+      email ? email['email'] : nil
     end
 
     def token
-      request.env['omniauth.auth']['credentials']['token']
+      token = request.env['omniauth.auth']['credentials']
+      token ? token['token'] : nil
     end
 end
