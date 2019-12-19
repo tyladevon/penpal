@@ -1,0 +1,7 @@
+<%= button_to 'Add a Buddy', '/buddies/new', method: :get %>
+
+<% current_user.buddies.each do |buddy| %>
+  <h3><%= buddy.first_name + ' ' + buddy.last_name %></h3>
+  <p>Email: <%= buddy.email %></p>
+  <p>Phone: <%= buddy.phone_number %></p>
+<% end %>
