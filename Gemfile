@@ -39,7 +39,9 @@ gem 'faraday'
 gem 'figaro'
 gem 'factory_bot_rails'
 gem 'faker'
-
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'google-api-client'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -53,6 +55,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'webdrivers'
+  gem 'launchy'
 end
 
 group :development do

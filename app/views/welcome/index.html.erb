@@ -1,0 +1,8 @@
+<% if current_user  %>
+  <h3>Welcome, <%= "#{current_user.first_name}" %>!</h3>
+  <%= link_to "Logout", logout_path %>
+<% else %>
+  <div class="g-signin2" data-onsuccess="onSignIn">
+    <%= link_to 'Sign in with Google', google_login_path, method: :get %>
+  </div>
+<% end %>
