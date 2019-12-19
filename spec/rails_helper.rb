@@ -57,6 +57,8 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+
+  config.include FactoryBot::Syntax::Methods
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -86,5 +88,15 @@ end
 
 def stub_omniauth
   OmniAuth.config.test_mode = true
-  OmniAuth.config.add_mock(:github, {:uid => '12345', :credentials => {token: ENV['GITHUB_TEST_TOKEN']}, :info => {nickname: 'github_name'}})
-end
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    :provider => 'google_oauth2',
+    :uid => '123545',
+    :info => { email: 'hfinn@mail.com',
+               first_name: 'Huck',
+               last_name: 'Finn'
+             },
+    :credentials => { token: '123123',
+                      refresh_token: '1242453593',
+                      expires_at: DateTime.now }
+          })
+  end
