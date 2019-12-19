@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get '/survey', to: 'survey#index'
 
   get '/profile', to: 'users#show'
+  get '/buddies', to: 'buddies#index'
+  get '/buddies/new', to: 'buddies#new'
+  post '/buddies', to: 'buddies#create'
   delete '/users', to: 'users#destroy'
 
   delete '/logout', to: 'sessions#destroy'
