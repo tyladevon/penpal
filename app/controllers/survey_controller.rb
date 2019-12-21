@@ -22,9 +22,9 @@ class SurveyController < ApplicationController
   private
 
   def create_feelings
-    feeling_params.values.each do |v|
-      current_user.feeling_preferences.create(feeling: v)
-    end
+    feeling_params.values.each do |feel|
+      current_user.feeling_preferences.create(feeling: feel)
+    end 
   end
 
   def create_music_preferences

@@ -6,7 +6,6 @@ describe FeelingPreference do
   end
 
   describe 'relationships' do
-    it { should have_many :feeling_categories }
     it { should belong_to :user }
   end
 end

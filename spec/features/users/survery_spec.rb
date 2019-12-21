@@ -24,8 +24,13 @@ require 'rails_helper'
       expect(current_path).to eq('/landing')
       expect(page).to have_content('Preferences saved')
 
-      expect(user.feeling_preferences).to include('Sad')
-      expect(user.feeling_preferences).to include('Down')
+      feelings = user.feeling_preferences.map do |pref|
+        pref.feeling
+      end
+
+
+      expect(feelings).to include('sad')
+      expect(feelings).to include('down')
 
       expect(user.time_preference).to include('Before bed')
 
