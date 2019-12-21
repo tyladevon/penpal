@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :music_preference do
-    description { 'rock' } 
+    genre { 'rock' } 
   end
 end

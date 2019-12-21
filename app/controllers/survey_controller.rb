@@ -19,21 +19,18 @@ class SurveyController < ApplicationController
     redirect_to '/landing'
   end
 
-
-
-
   private
 
   def create_feelings
-    feeling_params.values.each do |feel|
-      current_user.feeling_preferences.create(feeling: feel)
+    feeling_params.values.each do |v|
+      current_user.feeling_preferences.create(feeling: v)
     end
   end
 
   def create_music_preferences
-    music_params.values.each do |genre|
-      if genre
-        current_user.music_preferences.create(genre: genre)
+    music_params.values.each do |gen|
+      if gen
+        current_user.music_preferences.create(genre: gen)
       end
     end
   end
@@ -64,11 +61,11 @@ class SurveyController < ApplicationController
   end
 
   def music_params
-    params.require('music').permit('rock', 'folk/indie', 'custom', 'custom2', 'r&b-soul')
+    params.require('music').permit('rock')
   end
 
   def feeling_params
-    params.require('feelings').permit('sad', 'down', 'unmotivated', 'alone', 'mad')
+    params.require('feelings').permit('sad', 'down', 'alone', 'unmotivated', 'down')
   end
 
   def activity_params

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :feeling do
-    description { 'sad' } 
+    feeling { 'sad' } 
   end
 end
