@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_19_213145) do
+ActiveRecord::Schema.define(version: 2019_12_20_234852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activity_preferences", force: :cascade do |t|
+    t.string "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_activity_preferences_on_user_id"
+  end
 
   create_table "buddies", force: :cascade do |t|
     t.string "first_name"
@@ -26,6 +34,60 @@ ActiveRecord::Schema.define(version: 2019_12_19_213145) do
     t.index ["user_id"], name: "index_buddies_on_user_id"
   end
 
+  create_table "feeling_categories", force: :cascade do |t|
+    t.string "category"
+    t.bigint "user_id"
+    t.bigint "feeling_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feeling_id"], name: "index_feeling_categories_on_feeling_id"
+    t.index ["user_id"], name: "index_feeling_categories_on_user_id"
+  end
+
+  create_table "feelings", force: :cascade do |t|
+    t.string "feeling"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_feelings_on_user_id"
+  end
+
+  create_table "media_preferences", force: :cascade do |t|
+    t.boolean "dogs"
+    t.boolean "cats"
+    t.boolean "babies"
+    t.boolean "landscapes"
+    t.boolean "celestial"
+    t.boolean "animals"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_media_preferences_on_user_id"
+  end
+
+  create_table "music_preferences", force: :cascade do |t|
+    t.boolean "rock"
+    t.boolean "rnb_soul"
+    t.boolean "folk_indie"
+    t.string "custom"
+    t.string "custom2"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_music_preferences_on_user_id"
+  end
+
+  create_table "time_preferences", force: :cascade do |t|
+    t.boolean "morning"
+    t.boolean "midday"
+    t.boolean "before_bed"
+    t.boolean "random"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_time_preferences_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -36,5 +98,12 @@ ActiveRecord::Schema.define(version: 2019_12_19_213145) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "activity_preferences", "users"
   add_foreign_key "buddies", "users"
+  add_foreign_key "feeling_categories", "feelings"
+  add_foreign_key "feeling_categories", "users"
+  add_foreign_key "feelings", "users"
+  add_foreign_key "media_preferences", "users"
+  add_foreign_key "music_preferences", "users"
+  add_foreign_key "time_preferences", "users"
 end

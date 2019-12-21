@@ -4,8 +4,11 @@ class SurveyController < ApplicationController
   end
 
   def create
-    params['feelings'].each do |k,v|
-      current_user.feelings.create(feeling: v)
-    end 
+    params['feelings'].each do |feeling|
+      current_user.feelings.create(feeling: feeling)
+    end
+
+    flash[:success] = 'Preferences saved'
+    redirect_to '/landing'
   end
 end

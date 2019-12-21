@@ -1,0 +1,5 @@
+class MusicPreferencesController < ApplicationController
+
+
+
+end 
