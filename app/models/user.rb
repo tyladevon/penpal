@@ -3,10 +3,11 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   has_many :buddies
+  has_many :feeling_preferences
   has_many :feelings
+  has_many :activity_preferences
   has_many :feeling_categories
-  has_one :music_preference
+  has_many :music_preferences
   has_one :media_preference
-  has_one :activity_preference
   has_one :time_preference
 end

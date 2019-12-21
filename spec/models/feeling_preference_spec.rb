@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe FeelingCategory do
+describe FeelingPreference do
   describe 'validations' do
-    it { should validate_presence_of :category }
+    it { should validate_presence_of :feeling }
   end
 
   describe 'relationships' do
+    it { should have_many :feeling_categories }
     it { should belong_to :user }
-    it { should belong_to :feeling_preference }
   end
 end

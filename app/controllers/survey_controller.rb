@@ -4,37 +4,39 @@ class SurveyController < ApplicationController
   end
 
   def create
-    current_user.feelings.create(params['feeling'])
+    current_user.feelings.create(feeling_params)
 
-    params['time'].each do |time|
-      current_user.time_preference.create("#{time}": true)
-    end
 
-    params['music'].each do |music|
-      if music && current_user.music_prefence[music]
-        current_user.music_preference.udpate("#{music}": true)
-      elsif music && !current_user.music_preference['custom']
-        current_user.music_prefence.update(custom: music)
-      elsif music && current_user.music_preference['custom']
-        current_user.music_prefence.update(custom2: music)
-      end
-    end
+    current_user.music_preferences.create(music_params)
 
-    params['resources'].each do |resource|
-      current_user.activity_preferences.create(description: resource)
-    end
+    current_user.activity_preferences.create(activity_params)
 
-    params['media'].each do |media|
-      current_user.media_preference.update('media': true)
-    end
+    current_user.time_preferences.create(time_params)
 
-    params['activity'].each do |activity|
-      if activity
-        current_user.activity_preferences.create(description: activity)
-      end
-    end
+    current_user.media_preferences.create(media_params)
 
     flash[:success] = 'Preferences saved'
     redirect_to '/landing'
+  end
+
+
+
+
+  private
+
+  def music_params
+  end
+
+  def feeling_params
+
+  end
+
+  def activity_params
+  end
+
+  def time_params
+  end
+
+  def media_params
   end
 end

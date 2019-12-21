@@ -2,11 +2,8 @@ require 'rails_helper'
 
 describe MusicPreference do
   describe 'validations' do
-    it { should validate_presence_of :rock}
-    it { should validate_presence_of :rnb_soul}
-    it { should validate_presence_of :folk_indie}
-    it { should validate_presence_of :custom}
-    it { should validate_presence_of :custom2}
+    it { should validate_presence_of :genre }
+
   end
 
   describe 'relationships' do
