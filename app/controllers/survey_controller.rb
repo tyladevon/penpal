@@ -24,21 +24,21 @@ class SurveyController < ApplicationController
   def create_feelings
     feeling_params.values.each do |feel|
       current_user.feeling_preferences.create(feeling: feel)
-    end 
+    end
   end
 
   def create_music_preferences
     music_params.values.each do |gen|
-      if gen
-        current_user.music_preferences.create(genre: gen)
+      if gen != ''
+        current_user.music_preferences.create!(genre: gen)
       end
     end
   end
 
   def create_activity_preferences
     activity_params.values.each do |activity|
-      if activity
-        current_user.activity_preferences.create(description: activity)
+      if activity != ''
+        current_user.activity_preferences.create!(description: activity)
       end
     end
     resource_params.values.each do |resource|
@@ -47,25 +47,25 @@ class SurveyController < ApplicationController
   end
 
   def create_time_preferences
-    time_preference = TimePreference.new(user_id: current_user.id)
-    time_params.values.each do |time|
-      time_preference.update_attribute(time, true)
+    time = TimePreference.create(user_id: current_user.id)
+    time_params.values.each do |pref|
+      time.update_attribute(pref, true)
     end
   end
 
   def create_media_preferences
-    media_preference = MediaPreference.new(user_id: current_user.id)
+    media_preference = MediaPreference.create(user_id: current_user.id)
     media_params.values.each do |media|
       media_preference.update_attribute(media, true)
     end
   end
 
   def music_params
-    params.require('music').permit('rock')
+    params.require('music').permit!
   end
 
   def feeling_params
-    params.require('feelings').permit('sad', 'down', 'alone', 'unmotivated', 'down')
+    params.require('feelings').permit!
   end
 
   def activity_params
@@ -77,10 +77,10 @@ class SurveyController < ApplicationController
   end
 
   def time_params
-    params.require('time').permit('before_bed', 'midday', 'morning', 'random' )
+    params.require('time').permit!
   end
 
   def media_params
-    params.require('media').permit('dogs', 'cats', 'animals', 'babies', 'celestial', 'landscapes')
+    params.require('media').permit!
   end
 end

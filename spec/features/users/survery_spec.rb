@@ -28,21 +28,28 @@ require 'rails_helper'
         pref.feeling
       end
 
-
       expect(feelings).to include('sad')
       expect(feelings).to include('down')
 
-      expect(user.time_preference).to include('Before bed')
+      expect(user.media_preference[:dogs]).to eq(true)
+      expect(user.media_preference[:celestial]).to eq(true)
 
-      expect(user.music_preferences).to include('Folk/Indie')
+      expect(user.time_preference[:before_bed]).to eq(true)
 
-      expect(user.media_preference).to include('Dogs')
-      expect(user.media_preference).to include('Celestial')
+      music = user.music_preferences.map do |pref|
+        pref.genre
+      end
 
-      expect(user.activity_preferences).to include('Listen to my favorite music')
-      expect(user.activity_preferences).to include('Perform an activity I enjoy')
-      expect(user.activity_preferences).to include('Swimming')
-      expect(user.activity_preferences).to include('Coloring')
+      expect(music).to include('folkindie')
+
+      activities = user.activity_preferences.map do |pref|
+        pref.description
+      end
+
+      expect(activities).to include('Swimming')
+      expect(activities).to include('Coloring')
+      expect(activities).to include('music')
+      expect(activities).to include('activity')
 
     end
   end

@@ -1,5 +1,0 @@
-class TimePreferencesController < ApplicationController
-
-
-
-end 
