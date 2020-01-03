@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   def show
   end
 
+  def edit
+
+  end 
+
   def destroy
     User.destroy(current_user.id)
     session.clear

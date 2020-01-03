@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/buddies/new', to: 'buddies#new'
   post '/buddies', to: 'buddies#create'
   delete '/users', to: 'users#destroy'
+  get '/users/edit', to: 'users#edit'
   post '/survey', to: 'survey#create'
 
   delete '/logout', to: 'sessions#destroy'
