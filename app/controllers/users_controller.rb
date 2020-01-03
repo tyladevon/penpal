@@ -12,13 +12,13 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    user.update(user_params)
-    if user.save
+    @user = current_user
+    @user.update(user_params)
+    if @user.save
       flash[:success] = 'Profile Updated!'
       redirect_to '/profile'
     else
-      flash[:error] = user.errors.full_messages.to_sentence
+      flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
