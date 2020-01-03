@@ -12,5 +12,5 @@
 <% end %>
 
 
-<%= button_to 'Edit Account', '/users/edit' %>
-<%= button_to 'Delete Account', '/users', method: :delete %>
+<%= link_to 'Edit Profile', "/users/#{current_user.id}/edit" %>
+<%= button_to 'Delete Account', "/users/#{current_user.id}", method: :delete %>

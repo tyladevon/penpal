@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get '/buddies', to: 'buddies#index'
   get '/buddies/new', to: 'buddies#new'
   post '/buddies', to: 'buddies#create'
-  delete '/users', to: 'users#destroy'
-  get '/users/edit', to: 'users#edit'
   post '/survey', to: 'survey#create'
+
+  resources :users, only: [:edit, :update, :destroy]
 
   delete '/logout', to: 'sessions#destroy'
   get '/auth/google_oauth2', as: 'google_login'
