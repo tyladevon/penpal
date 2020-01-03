@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :buddies
   has_many :feeling_preferences
-  has_many :feelings
+  has_many :daily_feelings
   has_many :activity_preferences
   has_many :feeling_categories
   has_many :music_preferences

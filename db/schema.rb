@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_235515) do
+ActiveRecord::Schema.define(version: 2020_01_03_223602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(version: 2019_12_21_235515) do
     t.index ["user_id"], name: "index_buddies_on_user_id"
   end
 
+  create_table "daily_feelings", force: :cascade do |t|
+    t.string "feeling"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_daily_feelings_on_user_id"
+  end
+
   create_table "feeling_categories", force: :cascade do |t|
     t.string "category"
     t.bigint "user_id"
@@ -50,14 +56,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_235515) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feeling_preferences_on_user_id"
-  end
-
-  create_table "feelings", force: :cascade do |t|
-    t.string "feeling"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_feelings_on_user_id"
   end
 
   create_table "media_preferences", force: :cascade do |t|
@@ -104,10 +102,10 @@ ActiveRecord::Schema.define(version: 2019_12_21_235515) do
 
   add_foreign_key "activity_preferences", "users"
   add_foreign_key "buddies", "users"
+  add_foreign_key "daily_feelings", "users"
   add_foreign_key "feeling_categories", "feeling_preferences"
   add_foreign_key "feeling_categories", "users"
   add_foreign_key "feeling_preferences", "users"
-  add_foreign_key "feelings", "users"
   add_foreign_key "media_preferences", "users"
   add_foreign_key "music_preferences", "users"
   add_foreign_key "time_preferences", "users"

@@ -1,0 +1,5 @@
+class DailyFeelingsController < ApplicationController
+
+
+
+end

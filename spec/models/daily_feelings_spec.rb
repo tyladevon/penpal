@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Feeling do
+describe DailyFeeling do
   describe 'validations' do
     it { should validate_presence_of :feeling }
   end
