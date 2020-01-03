@@ -8,7 +8,7 @@ describe 'user can connect to spotify' do
 
     visit '/profile'
 
-    click_link 'Connect to Spotify'
+    #mock spotify connect 
 
 
 
