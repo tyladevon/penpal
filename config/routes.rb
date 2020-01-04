@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/landing', to: 'landing#index'
   get '/survey', to: 'survey#index'
   get '/boost', to: 'boost#show'
+  post '/journal_entries', to: 'journal_entries#create'
 
   get '/profile', to: 'users#show'
   post '/survey', to: 'survey#create'
