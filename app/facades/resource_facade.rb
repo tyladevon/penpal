@@ -6,7 +6,7 @@ class ResourceFacade
   end
 
   def quote
-    Dbt.random
+    DbtQuote.random
   end
 
   def get_resource

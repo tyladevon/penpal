@@ -11,11 +11,11 @@ user_2 = User.create(first_name: 'Clark', last_name: 'Kent', email: 'lasereyes@h
 user_3 = User.create(first_name: 'Santa', last_name: 'Clause', email: 'jollynick@christmas.com', google_token: ENV['GOOGLE_TEST_TOKEN'] )
 
 
-quote_1 = Dbt.create(quote: "Let each situation be what it is instead of what you think it should be")
-quote_2 = Dbt.create(quote: "I still have a long way to go, but I'm already so far from where I used to be and I'm proud of that")
-quote_3 = Dbt.create(quote: "Be in the moment, identify the feeling, let it pass like a wave on the beach")
-quote_4 = Dbt.create(quote: "I am not what has happened to me. I am what I choose to become")
-quote_5 = Dbt.create(quote: "Find the courage to let go of what you cannot change and discover what is next")
+quote_1 = DbtQuote.create(quote: "Let each situation be what it is instead of what you think it should be")
+quote_2 = DbtQuote.create(quote: "I still have a long way to go, but I'm already so far from where I used to be and I'm proud of that")
+quote_3 = DbtQuote.create(quote: "Be in the moment, identify the feeling, let it pass like a wave on the beach")
+quote_4 = DbtQuote.create(quote: "I am not what has happened to me. I am what I choose to become")
+quote_5 = DbtQuote.create(quote: "Find the courage to let go of what you cannot change and discover what is next")
 
 # sad_user_1 = user_1.feelings.create(feeling: 'sad')
 # upset_user_1 = user_1.feelings.create(feeling: 'upset')
