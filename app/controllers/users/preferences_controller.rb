@@ -8,7 +8,6 @@ class Users::PreferencesController < ApplicationController
   end
 
   def update
-
     update_feelings
 
     update_music_preferences
