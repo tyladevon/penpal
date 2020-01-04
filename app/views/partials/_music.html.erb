@@ -1,6 +1,4 @@
 <section id='music'>
   <p>Penpal selected the following song to lift your spirits:</p>
-  <p><%= music.song_artist %></p>
-  <p><%= music.song_title %></p>
-  <p><%= music.song_url %></p>
+  <p><%= link_to resource_facade.resource.song_name, resource_facade.resource.url %></p>
 </section>
