@@ -5,11 +5,9 @@ Rails.application.routes.draw do
   get '/survey', to: 'survey#index'
 
   get '/profile', to: 'users#show'
-  get '/buddies', to: 'buddies#index'
-  get '/buddies/new', to: 'buddies#new'
-  post '/buddies', to: 'buddies#create'
   post '/survey', to: 'survey#create'
 
+  resources :buddies, except: :show
   resources :users, only: [:edit, :update, :destroy]
 
   get '/preferences', to: 'users/preferences#index'
