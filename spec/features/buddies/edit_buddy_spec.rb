@@ -21,7 +21,6 @@ describe 'As a registered user' do
     fill_in :phone_number, with: '303-555-3131'
     click_on 'Update Buddy'
 
-
     expect(current_path).to eq('/buddies')
     expect(page).to have_content('Buddy Updated!')
 
@@ -34,6 +33,7 @@ describe 'As a registered user' do
       expect(page).to have_content('303-555-3131')
     end
   end
+  
   it 'cannot edit support buddy without filling out all fields' do
     user = create(:user)
     stub_user(user)
@@ -53,7 +53,6 @@ describe 'As a registered user' do
     fill_in :email, with: ''
     fill_in :phone_number, with: '303-555-3131'
     click_on 'Update Buddy'
-
 
     expect(page).to have_content("Last name can't be blank and Email can't be blank")
   end
