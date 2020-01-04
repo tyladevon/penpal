@@ -1,0 +1,4 @@
+class FeelingCategoriesController < ApplicationController
+
+
+end 

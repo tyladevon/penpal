@@ -21,5 +21,12 @@ describe User do
 
   describe 'relationships' do
     it { should have_many :buddies }
+    it { should have_many :daily_feelings }
+    it { should have_many :feeling_categories }
+    it { should have_many :activity_preferences }
+    it { should have_many :feeling_preferences }
+    it { should have_many :music_preferences }
+    it { should have_one :media_preference }
+    it { should have_one :time_preference }
   end
 end
