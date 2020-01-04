@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get '/landing', to: 'landing#index'
   get '/survey', to: 'survey#index'
+  get '/boost', to: 'boost#show'
 
   get '/profile', to: 'users#show'
   get '/buddies', to: 'buddies#index'
