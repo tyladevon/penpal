@@ -22,10 +22,16 @@ describe 'As a registered user' do
 
     click_button 'Add Buddy'
 
+    buddy = user.buddies.last
+
     expect(current_path).to eq('/buddies')
-    expect(page).to have_content('Greg Mitchell')
-    expect(page).to have_content('george_michael@mail.com')
-    expect(page).to have_content('303-555-2424')
+
     expect(page).to have_content('Successfully added buddy!')
+    
+    within "#buddy-#{buddy.id}" do
+      expect(page).to have_content('Greg Mitchell')
+      expect(page).to have_content('george_michael@mail.com')
+      expect(page).to have_content('303-555-2424')
+    end
   end
 end
