@@ -1,16 +1,14 @@
-<%= link_to 'Buddies', '/buddies', method: :get %>
-
-<h1>User Info</h1>
+<h1>Profile</h1>
 
 <p>Name: <%= current_user.first_name %>  <%= current_user.last_name %></p>
 <p>Email: <%= current_user.email %> </p>
-
-
 
 <% if !current_user.spotify_token %>
   <%= link_to 'Connect to Spotify', spotify_path %>
 <% end %>
 
 
+<%= link_to 'Preferences', '/preferences' %>
+<%= link_to 'Buddies', '/buddies', method: :get %>
 <%= link_to 'Edit Profile', "/users/#{current_user.id}/edit" %>
 <%= button_to 'Delete Account', "/users/#{current_user.id}", method: :delete %>

@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update, :destroy]
 
+  get '/preferences', to: 'users/preferences#index'
+  get '/preferences/edit', to: 'users/preferences#edit'
+  patch '/preferences', to: 'users/preferences#update'
+
+
+
   delete '/logout', to: 'sessions#destroy'
   get '/auth/google_oauth2', as: 'google_login'
   get '/auth/google_oauth2/callback', to: 'users#create'
