@@ -1,8 +1,9 @@
 <h3>Journal about how you're feeling, then click save.</h3>
 <section id='journal-entry'>
-  <%= form_for @entry do |f| %>
+  <%= form_for resource_facade.new_entry do |f| %>
     <p>
-      <%= f.text_area(:text, size: '100x20') %>
+      <%= f.label :entry %>
+      <%= f.text_area(:entry, size: '100x20') %>
     </p>
     <p>
       <%= f.submit 'Save Entry', method: :post %>
