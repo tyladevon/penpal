@@ -14,6 +14,29 @@ class BuddiesController < ApplicationController
     end
   end
 
+  def edit
+    @buddy = current_user.buddies.find(params[:id])
+  end
+
+  def update
+    @buddy = current_user.buddies.find(params[:id])
+    @buddy.update(buddy_params)
+    if @buddy.save
+      flash[:success] = 'Buddy Updated!'
+      redirect_to '/buddies'
+    else
+      flash[:error] = @buddy.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
+  def destroy
+    Buddy.destroy(params[:id])
+
+    flash[:success] = 'Buddy Deleted'
+    redirect_to '/buddies'
+  end
+
   private
 
   def buddy_params
