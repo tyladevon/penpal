@@ -30,7 +30,7 @@ class SurveyController < ApplicationController
   def create_music_preferences
     music_params.values.each do |gen|
       if gen != ''
-        current_user.music_preferences.create!(genre: gen)
+        current_user.music_preferences.create(genre: gen)
       end
     end
   end
@@ -38,7 +38,7 @@ class SurveyController < ApplicationController
   def create_activity_preferences
     activity_params.values.each do |activity|
       if activity != ''
-        current_user.activity_preferences.create!(description: activity)
+        current_user.activity_preferences.create(description: activity)
       end
     end
     resource_params.values.each do |resource|
