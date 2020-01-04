@@ -9,6 +9,10 @@ class ResourceFacade
     DbtQuote.random
   end
 
+  def new_entry
+    @entry ||= @user.journal_entries.new
+  end
+
   def get_resource
     service = PenpalService.new(user_info)
     raw_data = service.get_suggestion
