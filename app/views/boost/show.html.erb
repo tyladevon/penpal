@@ -6,23 +6,15 @@
   </head>
 
   <body>
-    <header class='boost-header'>
-      <h2>Penpal Recommends: <%= resource_facade.suggestion %></h2>
-    </header>
+    <% if @completed != true %>
+      <header class='boost-header'>
+        <h2>Penpal Recommends: <%= resource_facade.suggestion %></h2>
+      </header>
 
-    <main class='boost-main'>
-      <% if resource_facade.suggestion == 'media' %>
-        <%= render partial: 'partials/media' %>
-      <% elsif resource_facade.suggestion == 'music' %>
-        <%= render partial: 'partials/music' %>
-      <% elsif resource_facade.suggestion == 'journal' %>
-        <%= render partial: 'partials/journal' %>
-      <% elsif resource_facade.suggestion == 'buddy' %>
-        <%= render partial: 'partials/buddy' %>
-      <% elsif resource_facade.suggestion == 'activity' %>
-        <%= render partial: 'partials/activity' %>
-      <% end %>
-    </main>
+      <main class='boost-main'>
+        <%= render partial: "partials/#{resource_facade.suggestion}" %>
+      </main>
+    <% end %>
 
     <p>Select whether you <%= link_to 'Completed', '/dbt', method: :get %> or
     <%= link_to 'Opted Out', '/dbt', method: :get %> of the suggested task</p>
