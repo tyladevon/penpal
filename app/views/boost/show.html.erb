@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Boost</title>
+  </head>
+
+  <body>
+    <header class='boost-header'>
+      <h2>Penpal Recommends: <%= facade.suggestion %></h2>
+    </header>
+
+    <main class='boost-main'>
+      <% if facade.suggestion == 'media' %>
+        <%= render partial: 'partials/media' %>
+      <% elsif facade.suggestion == 'music' %>
+        <%= render partial: 'partials/music' %>
+      <% elsif facade.suggestion == 'journal' %>
+        <%= render partial: 'partials/journal' %>
+      <% elsif facade.suggestion == 'buddy' %>
+        <%= render partial: 'partials/buddy' %>
+      <% elsif facade.suggestion == 'activity' %>
+        <%= render partial: 'partials/activity' %>
+      <% end %>
+    </main>
+
+    <p>Select whether you <%= link_to 'Completed', '/complete', method: :get %> or
+    <%= link_to 'Opted Out', '/complete', method: :get %> of the suggested task</p>
+
+  </body>
+</html>
