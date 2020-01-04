@@ -1,19 +1,19 @@
 language: ruby
 script:
-  - bundle exec rails db:migrate RAILS_ENV=test
-  - bundle exec rspec
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
 rvm:
 - 2.5.0
 services:
-  - postgresql
+- postgresql
 before_install: gem install bundler -v 2.0.2
 before_script:
-   - cp config/database.yml.travis config/database.yml
-   - psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
-    secure: K9B9V1M/e8j2lHOkOlIt/JCb0aPd7bycEinb/jWlkbGVws75n+GH4yuRz/eySA8rGnbnyRADY51jSBzZXAG5cxTKsriUJpvuLyRVC273H0FGidiCfsJ4Y5rLlgDLhgRzP3OjAolz6Y0RK5bxssv5a6g/lAAVSPJTvyb8W+Ktr55sU/bTkWFZrT2aUhsGZiFXIeF4Ocp2mDtef5vLyrbj8TkfTsNVQEGBy/6QNnmLeYOz0+kLAp9qRiDIYV7S2oZMhIg1SReczFv2vd0JsyiQhOXCnyiRdwyasyC8deMu6FbKRO2DN0m5bU8QbPOulFyf5tIXqDLtgsWeveq45EC+2ejHrpdL+QBcpwST75+IFLmzVsoCBK0bT9kL/FRzPz7JF/PXHYLJDvEFFiwDZgGzYXk/9Fzu0hWHrXVWtqpjxN3+bbDr/D8VDzf7WFmVjIT/lJ6IdccVDQeOGn8jjClve4YpSCLXPEnKCz7RzN41Z4voXEsa+fy7fg4sB0BuMxO11XyAKCKLCHuqlBRGAbtw1a0mYmguBtwHpDwWtza3LkwAn66GWrH2sOMq7gkM3jVg+eOzbW79aLUtQBMlm9770ct+lgSJI9KIWqR8RiiNIKOnhvKZTAIoIbK2kRvRylzlLNIbr8HFW/vkWnwDwrY/Cm6hyDUGHQc4eVmxvzJaiJ4=
+    secure: InPmou5XltDjxT0F2k5zEXxJOvXttJ2ZiUquaAH66EilLZmo925VvDWya2pYdUaVSm2EPzaH01cNr5hpKEAueD0yJ4/4UEFE16knvp/MUpgUSg0XYtCNwoJE8IjOhfHZJYXY1WyFKJZ8T9Qam3jSK53SoITYmjmpHx8QyfSpcuNaXWZUF5XCHzhSOi79qJDBJVoDRXhsr3y7zpiKJeKJtwvuBoGPrMzaDcvEbt0n+Nd/30j6/fWgHYHrjcNlrz6ONoZIlVJvo6yJrho3gMMNJeYcngiXzok0Aj6MwENjjiosW0qyd5ZPDXgjeg2VpZtTt9dR+9td+vuaYK7Er9tgfQxC8X+ZPK05ymtUyy1eHvrPHnlMFuFRj+GMshOGIayCbFblubWVLiQr2dY/SmJjujxMooltGaBDCEwCv3oWTFkYqFjr9tebJLDTXaN/9D3URsKeYXl/aEzfs4gR+IIooO+nV+bAmJp7jWH4bqhdszbvBY26f6ikFORGn+Hci8Hefm/+OnlDnteemOvFFIw6lrcJrQNsnpJXZfKZ627BoaZ6CMbMS8Kqlfamg7a83WtjpzLYn974rn14hu6VO2CpEuWM0ZRBW2GIkRcv7LlYIym2uQ7efPMhnk+rjlRzLAZAU+4/SbMtWVt8e1fOIuMLqv1UufBKJDuavQSuO96qCYs=
   app: penpal-boost
   on:
     repo: Not-Zorro/penpal
