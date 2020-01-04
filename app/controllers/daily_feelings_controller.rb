@@ -1,5 +1,3 @@
 class DailyFeelingsController < ApplicationController
 
-
-
 end
