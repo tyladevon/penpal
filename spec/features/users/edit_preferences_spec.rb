@@ -34,7 +34,7 @@ describe 'user can edit their preferences' do
     check 'Landscapes'
     fill_in 'activity[activity_1]', with: 'Rock Climbing'
     fill_in 'activity[activity_2]', with: 'Painting'
-    click_on 'Submit'
+    click_on 'Update Preferences'
 
     expect(current_path).to eq('/preferences')
     expect(page).to have_content('Preferences updated')
@@ -70,9 +70,5 @@ describe 'user can edit their preferences' do
     expect(activities).to include('Painting')
     expect(activities).to include('journal')
     expect(activities).to include('buddy')
-
-
-
-
   end
 end
