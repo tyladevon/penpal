@@ -6,7 +6,6 @@ class PenpalService
 
   private
 
-
   def conn
     Faraday.new(ENV['PENPAL_URL']) do |f|
       f.adapter Faraday.default_adapter
