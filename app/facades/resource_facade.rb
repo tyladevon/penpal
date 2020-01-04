@@ -5,6 +5,10 @@ class ResourceFacade
     @user = user
   end
 
+  def quote
+    Dbt.random
+  end
+
   def get_resource
     service = PenpalService.new(user_info)
     raw_data = service.get_suggestion
