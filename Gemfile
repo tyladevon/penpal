@@ -40,6 +40,8 @@ gem 'figaro'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'omniauth'
+gem 'oauth2'
+gem 'omniauth-spotify'
 gem 'omniauth-google-oauth2'
 gem 'google-api-client'
 
