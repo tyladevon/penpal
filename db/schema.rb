@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_171618) do
+ActiveRecord::Schema.define(version: 2020_01_04_210305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,21 @@ ActiveRecord::Schema.define(version: 2020_01_04_171618) do
     t.index ["user_id"], name: "index_daily_feelings_on_user_id"
   end
 
+  create_table "dbt_quotes", force: :cascade do |t|
+    t.text "quote"
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "activity"
+    t.boolean "helpful"
+    t.boolean "again"
+    t.boolean "shift"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_feedbacks_on_user_id"
+  end
+
   create_table "feeling_categories", force: :cascade do |t|
     t.string "category"
     t.bigint "user_id"
@@ -56,6 +71,14 @@ ActiveRecord::Schema.define(version: 2020_01_04_171618) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_feeling_preferences_on_user_id"
+  end
+
+  create_table "journal_entries", force: :cascade do |t|
+    t.text "entry"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_journal_entries_on_user_id"
   end
 
   create_table "media_preferences", force: :cascade do |t|
@@ -103,9 +126,11 @@ ActiveRecord::Schema.define(version: 2020_01_04_171618) do
   add_foreign_key "activity_preferences", "users"
   add_foreign_key "buddies", "users"
   add_foreign_key "daily_feelings", "users"
+  add_foreign_key "feedbacks", "users"
   add_foreign_key "feeling_categories", "feeling_preferences"
   add_foreign_key "feeling_categories", "users"
   add_foreign_key "feeling_preferences", "users"
+  add_foreign_key "journal_entries", "users"
   add_foreign_key "media_preferences", "users"
   add_foreign_key "music_preferences", "users"
   add_foreign_key "time_preferences", "users"

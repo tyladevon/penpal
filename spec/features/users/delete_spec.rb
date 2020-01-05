@@ -13,7 +13,6 @@ describe 'As a registered user' do
 
     click_button 'Delete Account'
 
-    expect(current_path).to eq(root_path)
     expect(page).to have_content('Account deleted.')
   end
 end

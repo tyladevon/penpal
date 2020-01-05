@@ -1,15 +1,23 @@
 class ResourceFacade
-  attr_reader :suggestion
+  attr_reader :suggestion, :resource
 
   def initialize(user)
     @user = user
+  end
+
+  def quote
+    DbtQuote.random
+  end
+
+  def new_entry
+    @entry ||= @user.journal_entries.new
   end
 
   def get_resource
     service = PenpalService.new(user_info)
     raw_data = service.get_suggestion
     @suggestion = raw_data[:type]
-    raw_data[:type].capitalize.constantize.new(raw_data[:data])
+    @resource = raw_data[:type].capitalize.constantize.new(raw_data[:data], @user)
   end
 
   private

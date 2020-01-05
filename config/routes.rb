@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get '/landing', to: 'landing#index'
   get '/survey', to: 'survey#index'
+  get '/boost', to: 'boost#show'
+  post '/journal_entries', to: 'journal_entries#create'
 
   get '/profile', to: 'users#show'
   post '/survey', to: 'survey#create'
@@ -14,7 +16,8 @@ Rails.application.routes.draw do
   get '/preferences/edit', to: 'users/preferences#edit'
   patch '/preferences', to: 'users/preferences#update'
 
-
+  get '/dbt', to: 'dbt#show'
+  post '/feedback', to: 'feedback#create'
 
   delete '/logout', to: 'sessions#destroy'
   get '/auth/google_oauth2', as: 'google_login'
