@@ -4,8 +4,7 @@ class UsersController < ApplicationController
     user ? found_user_redirect(user) : setup_new_user
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     @user = current_user
@@ -24,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.destroy(current_user.id)
+    current_user.destroy
     session.clear
     flash[:notice] = 'Account deleted.'
     redirect_to root_path

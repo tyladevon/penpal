@@ -1,6 +1,3 @@
 class FeedbackController < ApplicationController
-
-  def create
-    
-  end
+  def create; end
 end
