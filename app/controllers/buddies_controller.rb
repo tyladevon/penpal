@@ -31,7 +31,7 @@ class BuddiesController < ApplicationController
   end
 
   def destroy
-    Buddy.destroy(params[:id])
+    current_user.buddies.destroy(params[:id])
 
     flash[:success] = 'Buddy Deleted'
     redirect_to '/buddies'
