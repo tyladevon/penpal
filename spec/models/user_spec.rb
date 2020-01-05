@@ -27,6 +27,7 @@ describe User do
     it { should have_many :feeling_preferences }
     it { should have_many :music_preferences }
     it { should have_many :journal_entries }
+    it { should have_many :feedbacks }
     it { should have_one :media_preference }
     it { should have_one :time_preference }
   end

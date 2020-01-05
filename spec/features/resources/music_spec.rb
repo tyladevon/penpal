@@ -6,6 +6,7 @@ describe "user can receive a music resource" do
     stub_user(user)
 
     allow_any_instance_of(ResourceFacade).to receive(:suggestion).and_return("music")
+
     music = Music.new({url: 'www.woo.co', song_name: 'Woop'}, user)
     allow_any_instance_of(ResourceFacade).to receive(:resource).and_return(music)
 
