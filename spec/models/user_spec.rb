@@ -29,5 +29,6 @@ describe User do
     it { should have_many :journal_entries }
     it { should have_one :media_preference }
     it { should have_one :time_preference }
+    it { should have_one :feedback }
   end
 end
