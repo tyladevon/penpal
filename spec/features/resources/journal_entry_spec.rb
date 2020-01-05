@@ -14,6 +14,7 @@ describe "user can receive a journal entry resource" do
     fill_in "Entry", with: "YOLO"
 
     click_on "Save Entry"
+
     user.reload
 
     entry = user.journal_entries.last
@@ -22,5 +23,4 @@ describe "user can receive a journal entry resource" do
 
     expect(page).to_not have_content("Journal about how you're feeling, then click save.")
   end
-
 end

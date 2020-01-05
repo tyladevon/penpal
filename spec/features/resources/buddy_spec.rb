@@ -7,6 +7,7 @@ describe "user can receive a buddy resource" do
     stub_user(user)
 
     allow_any_instance_of(ResourceFacade).to receive(:suggestion).and_return("buds")
+
     buddy = Buds.new(nil, user)
     allow_any_instance_of(ResourceFacade).to receive(:resource).and_return(buddy)
 

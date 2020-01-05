@@ -5,6 +5,7 @@ describe 'As a registered user' do
     user = create(:user)
     stub_user(user)
     buddy_1 = user.buddies.create(first_name: 'Greg', last_name: 'Mitchell', email: 'george_michael@mail.com', phone_number: '303-555-2424' )
+
     visit profile_path
 
     click_link 'Buddies'
@@ -25,6 +26,7 @@ describe 'As a registered user' do
     expect(page).to have_content('Buddy Updated!')
 
     buddy_1.reload
+
     visit '/buddies'
 
     within "#buddy-#{buddy_1.id}" do
@@ -33,11 +35,12 @@ describe 'As a registered user' do
       expect(page).to have_content('303-555-3131')
     end
   end
-  
+
   it 'cannot edit support buddy without filling out all fields' do
     user = create(:user)
     stub_user(user)
     buddy_1 = user.buddies.create(first_name: 'Greg', last_name: 'Mitchell', email: 'george_michael@mail.com', phone_number: '303-555-2424' )
+
     visit profile_path
 
     click_link 'Buddies'

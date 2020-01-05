@@ -16,6 +16,7 @@ describe 'user can edit their profile' do
     click_on 'Update User'
 
     user.reload
+    
     expect(current_path).to eq('/profile')
     expect(page).to have_content('Profile Updated!')
     expect(user.first_name).to eq('Lucille')
