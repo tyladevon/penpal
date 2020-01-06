@@ -2,4 +2,23 @@
 
 <h1>Welcome, <%= current_user.first_name %>!</h1>
 
+<%= form_tag '/daily_feeling', method: :post do %>
 <h2>How are you feeling?</h2>
+  <%= label_tag "Happy" %>
+  <%= radio_button("feeling", "feeling", "happy") %>
+  <%= label_tag "Sad" %>
+  <%= radio_button("feeling", "feeling", "sad") %>
+  <%= label_tag "Neutral" %>
+  <%= radio_button("feeling", "feeling", "neutral") %>
+  <%= label_tag "Down" %>
+  <%= radio_button("feeling", "feeling", "down") %>
+  <%= label_tag "Alone" %>
+  <%= radio_button("feeling", "feeling", "alone") %>
+  <%= label_tag "Motivated" %>
+  <%= radio_button("feeling", "feeling", "motivated") %>
+  <%= label_tag "Unmotivated" %>
+  <%= radio_button("feeling", "feeling", "motivated") %>
+  <%= label_tag "Mad" %>
+  <%= radio_button("feeling", "feeling", "mad") %>
+  <%= submit_tag 'submit' %>
+<% end %>
