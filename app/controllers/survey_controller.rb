@@ -1,10 +1,11 @@
 class SurveyController < ApplicationController
+  before_action :completed?, :logged_in?
   def index; end
 
   def create
     create_feelings; create_music_preferences; create_activity_preferences
     create_time_preferences; create_media_preferences
-
+    current_user.update(survey?: true)
     flash[:success] = 'Preferences saved'
     redirect_to '/landing'
   end
@@ -72,5 +73,11 @@ class SurveyController < ApplicationController
 
     def media_params
       params.require('media').permit!
+    end
+
+    def completed?
+      if current_user
+        redirect_to landing_path if current_user.survey?
+      end
     end
 end
