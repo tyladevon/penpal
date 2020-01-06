@@ -1,11 +1,11 @@
 class DailyFeelingController < ApplicationController
   def create
-    daily_feeling = DailyFeeling.create(feeling_param)
+    daily_feeling = current_user.daily_feelings.create(feeling_param)
     if daily_feeling.save
-      redirect_to '/booster'
+      redirect_to '/boost'
     else
-      redirct_to '/landing'
-    end 
+      redirect_to '/landing'
+    end
   end
 
   private
