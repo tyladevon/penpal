@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/landing', to: 'landing#index'
-  post '/daily_feeling', to: "daily_feeling#create"
+  post '/daily_feelings', to: "daily_feeling#create"
   get '/survey', to: 'survey#index'
   get '/boost', to: 'boost#show'
   post '/journal_entries', to: 'journal_entries#create'
