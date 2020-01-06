@@ -1,16 +1,17 @@
 class DailyFeelingController < ApplicationController
   def create
+    binding.pry
     daily_feeling = DailyFeeling.create(feeling_param)
     if daily_feeling.save
-      redirect_to '/booster'
+      redirect_to '/boost'
     else
-      redirct_to '/landing'
-    end 
+      redirect_to '/landing'
+    end
   end
 
   private
 
   def feeling_param
-    params.require(:daily_feeling).permit(:feeling)
+    params.permit('feeling: feeling')
   end
 end
