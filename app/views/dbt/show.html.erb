@@ -1,5 +1,5 @@
 <center>
-  <% if completed? %>
+  <% if survey_not_completed? %>
     <section>
       <%= render partial: 'partials/feedback' %>
     </section>
@@ -7,15 +7,16 @@
 
   <h3>DBT Quote: something to think about when you feel stuck</h3>
   <section id='dbt-quote'>
-    <%= resource_facade.quote %>
+    <%= @quote.quote %>
   </section>
 
-  <% if resource_facade.suggestion != 'journal' %>
+  <% if session[:suggestion] != 'journal' %>
     <h3>Journal about how you're feeling, then click save.</h3>
       <section id='journal-entry'>
       <%= form_for @entry do |f| %>
         <p>
-          <%= f.text_area(:text, size: '100x20') %>
+          <%= f.label 'Entry' %>
+          <%= f.text_area(:entry) %>
         </p>
         <p>
           <%= f.submit 'Save Entry', method: :post %>

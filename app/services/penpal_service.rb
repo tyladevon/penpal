@@ -1,7 +1,7 @@
 class PenpalService
 
   def get_suggestion
-    get_json
+    {type: 'activity', data: nil}
   end
 
   private
