@@ -4,7 +4,7 @@ class SurveyController < ApplicationController
 
   def create
     create_feelings; create_music_preferences; create_activity_preferences
-    create_time_preferences; create_media_preferences
+    create_time_preferences; create_media_preferences; create_resource_preferences
     current_user.update(survey?: true)
     flash[:success] = 'Preferences saved'
     redirect_to '/landing'
@@ -32,8 +32,12 @@ class SurveyController < ApplicationController
           current_user.activity_preferences.create(description: activity)
         end
       end
-      resource_params.values.each do |resource|
-        current_user.activity_preferences.create(description: resource)
+    end
+
+    def create_resource_preferences
+      resource_pref = ResourcePreference.create(user_id: current_user.id)
+      resource_params.values.each do |pref|
+        resource_pref.update_attribute(pref, true)
       end
     end
 

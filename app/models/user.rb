@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :music_preferences, dependent: :destroy
   has_many :journal_entries, dependent: :destroy
   has_many :feedbacks, dependent: :destroy
+  has_one :resource_preference, dependent: :destroy
   has_one :media_preference, dependent: :destroy
   has_one :time_preference, dependent: :destroy
 end

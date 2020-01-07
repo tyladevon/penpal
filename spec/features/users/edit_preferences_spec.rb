@@ -69,7 +69,7 @@ describe 'user can edit their preferences' do
 
     expect(activities).to include('Rock Climbing')
     expect(activities).to include('Painting')
-    expect(activities).to include('journal')
-    expect(activities).to include('buddy')
+    expect(user.resource_preference[:journal]).to eq(true)
+    expect(user.resource_preference[:buddy]).to eq(true)
   end
 end

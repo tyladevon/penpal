@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_221826) do
+ActiveRecord::Schema.define(version: 2020_01_06_235756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,18 @@ ActiveRecord::Schema.define(version: 2020_01_05_221826) do
     t.index ["user_id"], name: "index_music_preferences_on_user_id"
   end
 
+  create_table "resource_preferences", force: :cascade do |t|
+    t.boolean "music", default: false
+    t.boolean "activity", default: false
+    t.boolean "buddy", default: false
+    t.boolean "media", default: false
+    t.boolean "journal", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_resource_preferences_on_user_id"
+  end
+
   create_table "time_preferences", force: :cascade do |t|
     t.boolean "morning", default: false
     t.boolean "midday", default: false
@@ -138,5 +150,6 @@ ActiveRecord::Schema.define(version: 2020_01_05_221826) do
   add_foreign_key "journal_entries", "users"
   add_foreign_key "media_preferences", "users"
   add_foreign_key "music_preferences", "users"
+  add_foreign_key "resource_preferences", "users"
   add_foreign_key "time_preferences", "users"
 end

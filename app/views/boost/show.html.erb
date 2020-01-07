@@ -12,7 +12,7 @@
       </header>
 
       <main class='boost-main'>
-        <%= render partial: "partials/activity", locals: {resource_facade: resource_facade} %>
+        <%= render partial: "partials/#{resource_facade.suggestion}", locals: {resource_facade: resource_facade} %>
       </main>
     <% end %>
 

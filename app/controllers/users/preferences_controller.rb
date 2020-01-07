@@ -6,7 +6,7 @@ class Users::PreferencesController < ApplicationController
 
   def update
     update_feelings; update_music_preferences; update_activity_preferences
-    update_time_preferences; update_media_preferences
+    update_time_preferences; update_media_preferences; update_resource_preferences
 
     flash[:success] = 'Preferences updated'
     redirect_to '/preferences'
@@ -37,8 +37,13 @@ class Users::PreferencesController < ApplicationController
           current_user.activity_preferences.create(description: activity)
         end
       end
-      resource_params.values.each do |resource|
-        current_user.activity_preferences.create(description: resource)
+    end
+
+    def update_resource_preferences
+      current_user.resource_preference.destroy
+      resource_pref = ResourcePreference.create(user_id: current_user.id)
+      resource_params.values.each do |pref|
+        resource_pref.update_attribute(pref, true)
       end
     end
 
