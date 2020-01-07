@@ -10,6 +10,7 @@ describe 'User can fill out the survey' do
     check 'Sad'
     check 'Down'
     check 'Before bed'
+    check 'View cute animal pictures'
     check 'Listen to my favorite music'
     check 'Perform an activity I enjoy'
     check 'Folk/Indie'
@@ -45,9 +46,12 @@ describe 'User can fill out the survey' do
       pref.description
     end
 
+
+
     expect(activities).to include('Swimming')
     expect(activities).to include('Coloring')
-    expect(activities).to include('music')
-    expect(activities).to include('activity')
+    expect(user.resource_preference[:music]).to eq(true)
+    expect(user.resource_preference[:activity]).to eq(true)
+
   end
 end

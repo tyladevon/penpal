@@ -13,6 +13,6 @@ describe "user can receive an activity resource" do
 
     visit '/boost'
 
-    expect(page).to have_content("Penpal recommends: #{activ.description}")
+    expect(page).to have_content("Your recommended activity: #{activ.description}")
   end
 end

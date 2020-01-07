@@ -10,10 +10,13 @@
       <header class='boost-header'>
         <h2>Penpal Recommends: <%= resource_facade.suggestion %></h2>
       </header>
-
-      <main class='boost-main'>
-        <%= render partial: "partials/#{resource_facade.suggestion}" %>
-      </main>
+     <% if @journal_complete == true %>
+       <p>Great journal entry!</p>
+      <% else %>
+        <main class='boost-main'>
+          <%= render partial: "partials/#{resource_facade.suggestion}", locals: {resource_facade: resource_facade} %>
+        </main>
+      <% end %>
     <% end %>
 
     <p>Select whether you <%= link_to 'Completed', '/dbt', method: :get %> or

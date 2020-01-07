@@ -3,8 +3,19 @@ class SurveyController < ApplicationController
   def index; end
 
   def create
-    create_feelings; create_music_preferences; create_activity_preferences
-    create_time_preferences; create_media_preferences
+    create_resource_preferences
+    if music?
+      create_music_preferences
+    end
+    if media?
+      create_media_preferences
+    end
+    if activity?
+      create_activity_preferences
+    end
+
+    create_feelings
+    create_time_preferences
     current_user.update(survey?: true)
     flash[:success] = 'Preferences saved'
     redirect_to '/landing'
@@ -32,8 +43,12 @@ class SurveyController < ApplicationController
           current_user.activity_preferences.create(description: activity)
         end
       end
-      resource_params.values.each do |resource|
-        current_user.activity_preferences.create(description: resource)
+    end
+
+    def create_resource_preferences
+      resource_pref = ResourcePreference.create(user_id: current_user.id)
+      resource_params.values.each do |pref|
+        resource_pref.update_attribute(pref, true)
       end
     end
 
@@ -49,6 +64,18 @@ class SurveyController < ApplicationController
       media_params.values.each do |media|
         media_preference.update_attribute(media, true)
       end
+    end
+
+    def music?
+      music_params.values.any? {|genre| genre != '' } && resource_params.values.include?('music')
+    end
+
+    def activity?
+      activity_params.values.any? {|description| description != '' } && resource_params.values.include?('activity')
+    end
+
+    def media?
+      !media_params.empty? && resource_params.values.include?('media')
     end
 
     def music_params

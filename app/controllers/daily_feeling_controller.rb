@@ -11,6 +11,6 @@ class DailyFeelingController < ApplicationController
   private
 
   def feeling_param
-    params.permit('feeling: feeling')
+    params.require(:daily_feeling).permit(:feeling)
   end
 end
