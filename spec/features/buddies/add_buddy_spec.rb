@@ -33,4 +33,31 @@ describe 'As a registered user' do
       expect(page).to have_content('3035552424')
     end
   end
+  it 'adding a buddy sends the buddy an email' do
+    ActionMailer::Base.deliveries = []
+    user = create(:user, survey?: true)
+    stub_user(user)
+
+    visit profile_path
+
+    click_link 'Buddies'
+
+    expect(current_path).to eq('/buddies')
+
+    click_button 'Add a Buddy'
+
+    expect(current_path).to eq('/buddies/new')
+
+    fill_in :first_name, with: 'Greg'
+    fill_in :last_name, with: 'Mitchell'
+    fill_in :email, with: 'george_michael@mail.com'
+    fill_in :phone_number, with: '3035552424'
+    click_button 'Add Buddy'
+
+    # last_email = ActionMailer::Base.deliveries.last
+    # expect(last_email.to).to include('george_michael@mail.com')
+
+    expect(page).to have_content('Email sent to buddy!')
+  end
+
 end

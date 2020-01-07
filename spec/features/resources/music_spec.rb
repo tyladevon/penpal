@@ -9,6 +9,7 @@ describe "user can receive a music resource" do
 
     music = Music.new({url: 'www.woo.co', song_name: 'Woop'}, user)
     allow_any_instance_of(ResourceFacade).to receive(:resource).and_return(music)
+    allow_any_instance_of(ResourceFacade).to receive(:get_resource).and_return(music)
 
     visit '/boost'
 

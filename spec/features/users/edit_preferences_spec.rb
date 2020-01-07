@@ -13,6 +13,7 @@ describe 'user can edit their preferences' do
     check 'Before bed'
     check 'Listen to my favorite music'
     check 'Perform an activity I enjoy'
+    check 'View cute animal pictures'
     check 'Folk/Indie'
     check 'Dogs'
     check 'Celestial'
@@ -27,6 +28,7 @@ describe 'user can edit their preferences' do
     check 'Alone'
     check 'Unmotivated'
     check 'Random times'
+    check 'View cute animal pictures'
     check 'Talk to a friend or family member'
     check 'Journal'
     check 'Rock'
@@ -69,7 +71,7 @@ describe 'user can edit their preferences' do
 
     expect(activities).to include('Rock Climbing')
     expect(activities).to include('Painting')
-    expect(activities).to include('journal')
-    expect(activities).to include('buddy')
+    expect(user.resource_preference[:journal]).to eq(true)
+    expect(user.resource_preference[:buddy]).to eq(true)
   end
 end

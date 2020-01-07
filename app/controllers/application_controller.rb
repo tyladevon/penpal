@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def resource_facade
-    @resource_facade ||= ResourceFacade.new(current_user)
-  end
-
   def logged_in?
     redirect_to root_path if !current_user
   end

@@ -9,6 +9,7 @@ describe "user can receive a media resource" do
 
     media = Media.new({url: 'http://bit.ly/2FmmOoI'}, user)
     allow_any_instance_of(ResourceFacade).to receive(:resource).and_return(media)
+    allow_any_instance_of(ResourceFacade).to receive(:get_resource).and_return(media)
 
     visit '/boost'
 
