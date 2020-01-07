@@ -9,7 +9,7 @@ class BuddiesController < ApplicationController
     buddy = current_user.buddies.new(buddy_params)
     if buddy.save
       flash[:success] = 'Successfully added buddy!'
-      BuddyNotifier.inform(current_user, buddy).deliver_now
+      BuddyMailerJob.perform_later(current_user, buddy)
       flash[:notice] = 'Email sent to buddy!'
       redirect_to '/buddies'
     else

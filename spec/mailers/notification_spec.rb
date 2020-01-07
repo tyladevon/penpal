@@ -1,13 +1,13 @@
 require "rails_helper"
 
-RSpec.describe BuddyNotifier, type: :mailer do
+RSpec.describe BuddyMailer, type: :mailer do
   before(:each) do
     @user = create(:user, email: 'testing@testing.com')
     @buddy = @user.buddies.create(first_name: 'Greg', last_name: 'Mitchell', email: 'george_michael@mail.com', phone_number: '3035552424')
   end
 
   describe 'sends activation email' do
-    let(:mail) {BuddyNotifier.inform(@user, @buddy)}
+    let(:mail) {BuddyMailer.inform(@user, @buddy)}
 
     it 'renders the headers' do
       expect(mail.subject).to eq("#{@user.first_name.capitalize}" + ' ' + "#{@user.last_name.capitalize}" + " has added you as a buddy!")
