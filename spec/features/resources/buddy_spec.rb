@@ -9,9 +9,9 @@ describe "user can receive a buddy resource" do
 
     buddy = Buds.new(nil, user)
     allow_any_instance_of(ResourceFacade).to receive(:suggestion).and_return("buds")
+    allow_any_instance_of(ResourceFacade).to receive(:get_resource).and_return(buddy)
     allow_any_instance_of(ResourceFacade).to receive(:resource).and_return(buddy)
 
-    
     visit '/boost'
 
     expect(page).to have_content("Send a text to or call #{bddy.first_name + ' ' + bddy.last_name}")

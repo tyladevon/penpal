@@ -4,11 +4,7 @@ class ResourceFacade
   def initialize(user)
     @user = user
   end
-
-  def quote
-    DbtQuote.random
-  end
-
+  
   def new_entry
     @entry ||= @user.journal_entries.new
   end

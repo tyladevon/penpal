@@ -2,10 +2,12 @@ class JournalEntriesController < ApplicationController
   def create
     new_entry = current_user.journal_entries.new
     new_entry.update(journal_params)
-    if new_entry.save
+    if new_entry.save && params[:resource]
+      redirect_to '/boost?journal=true'
+    else
       redirect_to landing_path
+      session.delete(:suggestion)
     end
-    session.delete(:suggestion)
   end
 
   private
