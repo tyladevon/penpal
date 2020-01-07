@@ -1,6 +1,6 @@
 class BuddiesController < ApplicationController
   before_action :logged_in?, :survey_not_completed?
-  
+
   def index; end
 
   def new; end
@@ -9,6 +9,8 @@ class BuddiesController < ApplicationController
     buddy = current_user.buddies.new(buddy_params)
     if buddy.save
       flash[:success] = 'Successfully added buddy!'
+      BuddyNotifier.inform(current_user, buddy).deliver_now
+      flash[:notice] = 'Email sent to buddy!'
       redirect_to '/buddies'
     else
       flash[:error] = buddy.errors.full_messages.to_sentence
