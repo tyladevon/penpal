@@ -10,6 +10,8 @@ require File.expand_path('../config/environment', __dir__)
 require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
 
 VCR.configure do |config|
   config.ignore_localhost = true
