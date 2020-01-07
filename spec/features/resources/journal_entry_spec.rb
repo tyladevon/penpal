@@ -22,7 +22,7 @@ describe "user can receive a journal entry resource" do
     entry = user.journal_entries.last
     expect(entry.entry).to have_content("YOLO")
     expect(current_path).to eq('/boost')
-
+    expect(page).to have_content('Great journal entry!')
     expect(page).to_not have_content("Journal about how you're feeling, then click save.")
   end
 end
