@@ -10,6 +10,7 @@ describe 'User can fill out the survey' do
     check 'Sad'
     check 'Down'
     check 'Before bed'
+    check 'View cute animal pictures'
     check 'Listen to my favorite music'
     check 'Perform an activity I enjoy'
     check 'Folk/Indie'
