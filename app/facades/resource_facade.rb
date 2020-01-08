@@ -36,17 +36,11 @@ class ResourceFacade
     end
 
     def resource_info
-<<<<<<< HEAD
-      @user.resource_preferences.map do |pref, boolean|
-        pref if boolean
-      end
-=======
       preferences = ['music', 'activity', 'buddy', 'media', 'journal']
       user_preferences = @user.resource_preference
       preferences.map do |preference|
         preference if user_preferences.send(preference)
       end.compact
->>>>>>> 39e3f95853930ebf6659e8b9f4992ed537f32540
     end
 
 
