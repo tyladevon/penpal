@@ -1,5 +1,6 @@
 class SurveyController < ApplicationController
   before_action :completed?, :logged_in?
+
   def index; end
 
   def create
@@ -13,7 +14,6 @@ class SurveyController < ApplicationController
     if activity?
       create_activity_preferences
     end
-
     create_feelings
     create_time_preferences
     current_user.update(survey?: true)

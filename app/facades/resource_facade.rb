@@ -4,7 +4,7 @@ class ResourceFacade
   def initialize(user)
     @user = user
   end
-  
+
   def new_entry
     @entry ||= @user.journal_entries.new
   end
@@ -32,7 +32,6 @@ class ResourceFacade
         feeling_pref.feeling
       end
     end
-
 
     def music_info
       @user.music_preferences.map do |preference|

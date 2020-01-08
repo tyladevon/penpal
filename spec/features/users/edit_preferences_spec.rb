@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'user can edit their preferences' do
   it 'from preferences page links to edit preferences' do
     user = create(:user)

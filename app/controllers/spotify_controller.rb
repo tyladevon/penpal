@@ -1,5 +1,4 @@
 class SpotifyController < ApplicationController
-
   def create
     current_user.update({
       spotify_token: params['code']
