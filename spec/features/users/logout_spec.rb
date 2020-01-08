@@ -7,9 +7,7 @@ describe 'As a registered user' do
 
     visit landing_path
 
-    within '.nav' do
       click_button 'Logout'
-    end
 
     expect(page).to have_content('Logout Successful')
   end
