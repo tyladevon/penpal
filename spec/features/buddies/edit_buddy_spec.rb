@@ -56,7 +56,7 @@ describe 'As a registered user' do
     fill_in :email, with: ''
     fill_in :phone_number, with: '3035553131'
     click_on 'Update Buddy'
-
-    expect(page).to have_content("Last name can't be blank, Email can't be blank, and Email is invalid\nHome\nEdit Buddy\nFirst name Last name Email Phone number")
+# save_and_open_page
+    expect(page).to have_content("Last name can't be blank, Email can't be blank, and Email is invalid")
   end
 end

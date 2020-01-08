@@ -2,15 +2,20 @@
 <html>
   <head>
     <title>Penpal</title>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-        
+
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+    <script>
+      window.onSpotifyWebPlaybackSDKReady = () => {
+        // You can now initialize Spotify.Player and use the SDK
+    };
+    </script>
+
     <% flash.each do |name, msg| %>
       <div class="<%=name%>-flash">
         <p><%= msg %></p>
@@ -18,4 +23,5 @@
     <% end %>
     <%= yield %>
   </body>
+
 </html>
