@@ -5,23 +5,25 @@
     <title>Boost</title>
   </head>
 
-  <body>
-    <% if @completed != true %>
-      <header class='boost-header'>
-        <h2>Penpal Recommends: <%= resource_facade.suggestion %></h2>
-      </header>
-     <% if @journal_complete == true %>
-       <p>Great journal entry!</p>
-      <% else %>
-        <main class='boost-main'>
-          <%= render partial: "partials/#{resource_facade.suggestion}", locals: {resource_facade: resource_facade} %>
-        </main>
+  <center>
+    <body>
+      <% if @completed != true %>
+        <header class='boost-header'>
+          <h3>Penpal Recommends: <%= resource_facade.suggestion.capitalize %></h3>
+        </header>
+       <% if @journal_complete == true %>
+         <p>Great journal entry!</p>
+        <% else %>
+          <main class='boost-main'>
+            <%= render partial: "partials/#{resource_facade.suggestion}", locals: {resource_facade: resource_facade} %>
+          </main>
+        <% end %>
       <% end %>
-    <% end %>
-    <%= render partial: 'partials/spotify' %>
+      <%= render partial: 'partials/spotify' %>
 
-    <p>Select whether you <%= link_to 'Completed', '/dbt', method: :get %> or
-    <%= link_to 'Opted Out', '/dbt', method: :get %> of the suggested task</p>
+      <p>Select whether you <%= link_to 'Completed', '/dbt', method: :get %> or
+      <%= link_to 'Opted Out', '/dbt', method: :get %> of the suggested task</p>
 
-  </body>
+    </body>
+  </center>
 </html>

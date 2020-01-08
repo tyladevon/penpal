@@ -12,18 +12,18 @@ describe "user can receive a journal entry resource" do
 
     visit '/boost'
 
-    expect(page).to have_content("Journal about how you're feeling, then click save.")
+    expect(page).to have_content('Journal about whatever comes up for you, then click save.')
 
-    fill_in "Entry", with: "YOLO"
+    fill_in with: 'YOLO'
 
-    click_on "Save Entry"
+    click_on 'Save'
 
     user.reload
 
     entry = user.journal_entries.last
-    expect(entry.entry).to have_content("YOLO")
+    expect(entry.entry).to have_content('YOLO')
     expect(current_path).to eq('/boost')
     expect(page).to have_content('Great journal entry!')
-    expect(page).to_not have_content("Journal about how you're feeling, then click save.")
+    expect(page).to_not have_content('Journal about whatever comes up for you, then click save.')
   end
 end

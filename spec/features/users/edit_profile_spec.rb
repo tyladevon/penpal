@@ -11,7 +11,7 @@ describe 'user can edit their profile' do
 
     fill_in 'First name', with: 'Lucille'
     fill_in 'Last name', with: 'Ball'
-    click_on 'Update User'
+    click_on 'Update'
 
     user.reload
 
@@ -31,7 +31,7 @@ describe 'user can edit their profile' do
 
     fill_in 'First name', with: 'Lucille'
     fill_in 'Last name', with: ''
-    click_on 'Update User'
+    click_on 'Update'
 
     expect(page).to have_content("Last name can't be blank")
   end

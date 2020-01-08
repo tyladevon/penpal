@@ -5,21 +5,21 @@
     </section>
   <% end %>
 
-  <h3>DBT Quote: something to think about when you feel stuck</h3>
+  <h3>Something to think about when you feel stuck...</h3>
   <section id='dbt-quote'>
-    <%= @quote.quote %>
-  </section>
+    "<%= @quote.quote %>"
+  </section></br>
 
   <% if session[:suggestion] != 'journal' %>
-    <h3>Journal about how you're feeling, then click save.</h3>
+    <h4>Journal about whatever comes up for you, then click save.</h4>
+    <p>Don't want to journal? That's okay. Type 'I don't want to journal today.'</p>
       <section id='journal-entry'>
       <%= form_for @entry do |f| %>
         <p>
-          <%= f.label 'Entry' %>
-          <%= f.text_area(:entry) %>
+          <%= f.text_area(:entry, size: '100x20') %>
         </p>
         <p>
-          <%= f.submit 'Save Entry', method: :post %>
+          <%= f.submit 'Save', method: :post %>
         </p>
       <% end %>
       </section>
