@@ -1,15 +1,9 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 user_1 = User.create(first_name: 'Chuck', last_name: 'Norris', email: 'roundhouse@kickit.com', google_token: ENV['GOOGLE_TEST_TOKEN'] )
 user_2 = User.create(first_name: 'Clark', last_name: 'Kent', email: 'lasereyes@heroes.com', google_token: ENV['GOOGLE_TEST_TOKEN'] )
 user_3 = User.create(first_name: 'Santa', last_name: 'Clause', email: 'jollynick@christmas.com', google_token: ENV['GOOGLE_TEST_TOKEN'] )
-
 
 quote_1 = DbtQuote.create(quote: "Let each situation be what it is instead of what you think it should be")
 quote_2 = DbtQuote.create(quote: "I still have a long way to go, but I'm already so far from where I used to be and I'm proud of that")

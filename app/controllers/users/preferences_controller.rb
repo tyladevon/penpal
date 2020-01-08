@@ -8,7 +8,6 @@ class Users::PreferencesController < ApplicationController
     destroy
     update_feelings; update_music_preferences; update_activity_preferences
     update_time_preferences; update_media_preferences; update_resource_preferences
-
     flash[:success] = 'Preferences updated'
     redirect_to '/preferences'
   end
