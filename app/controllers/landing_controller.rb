@@ -1,5 +1,5 @@
 class LandingController < ApplicationController
-  before_action :logged_in?, :survey_not_completed?
+  before_action :logged_in?, :survey_not_completed?, :buddy?, :spotify?
   def index
     @daily_feeling = current_user.daily_feelings.new
   end
