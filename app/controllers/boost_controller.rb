@@ -13,5 +13,10 @@ class BoostController < ApplicationController
       session[:suggestion] = facade.suggestion
       render locals: { resource_facade: facade }
     end
+    if session[:suggestion] = 'music'
+      @accounts = Spotify::Accounts.new
+      @session = Spotify::Accounts::Session.from_refresh_token(@accounts, current_user.spotify_refresh_token)
+      @sdk = Spotify::SDK.new(@session)
+    end 
   end
 end

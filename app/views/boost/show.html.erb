@@ -18,6 +18,7 @@
         </main>
       <% end %>
     <% end %>
+    <%= render partial: 'partials/spotify' %>
 
     <p>Select whether you <%= link_to 'Completed', '/dbt', method: :get %> or
     <%= link_to 'Opted Out', '/dbt', method: :get %> of the suggested task</p>

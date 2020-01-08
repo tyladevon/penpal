@@ -11,6 +11,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 require 'sidekiq/testing'
+
 Sidekiq::Testing.fake!
 
 VCR.configure do |config|
