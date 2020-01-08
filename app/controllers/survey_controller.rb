@@ -18,6 +18,7 @@ class SurveyController < ApplicationController
     create_time_preferences
     current_user.update(survey?: true)
     flash[:success] = 'Preferences saved'
+
     redirect_to '/landing'
   end
 

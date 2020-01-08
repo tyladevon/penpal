@@ -5,6 +5,8 @@ describe 'As a registered user' do
     user = create(:user, survey?: true)
     stub_user(user)
 
+    ResourcePreference.create(user_id: user.id, journal: true )
+
     visit landing_path
 
     click_button 'Profile'

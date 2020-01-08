@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "user can receive a music resource" do
-  it "displays song url" do
+  it "displays song url", :vcr do
     user = create(:user, survey?: true)
     stub_user(user)
 

@@ -7,9 +7,9 @@ class PenpalService
     { type: 'media', data: { url: '', alt_text: '' } }
     { type: 'music',
       data: {
-        song_name: '',
+        song_name: 'Alive',
         artist_name: '',
-        song_url: '',
+        song_url: 'https://open.spotify.com/track/0dtuE679z6pgdEIMjgj26u?si=FMUDg1e2Sk24O6ZxptHBIA',
         image: '',
         track_id: ''
       }

@@ -17,6 +17,8 @@ describe 'As a newly registered user' do
   it 'A registered user can login' do
     user = create(:user, email: 'hfinn@mail.com', survey?: true)
     stub_omniauth
+    ResourcePreference.create(user_id: user.id, journal: true )
+
 
     visit '/'
     click_link('Sign in with Google')
