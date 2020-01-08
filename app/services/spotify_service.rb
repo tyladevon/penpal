@@ -16,6 +16,7 @@ class SpotifyService
 
   def self.get_json(refresh)
     response = self.get_connection(refresh)
+    JSON.parse(response.body)
   end
 
 end

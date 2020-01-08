@@ -3,12 +3,12 @@ class SpotifyController < ApplicationController
   def create
     if current_user.spotify_token
       service = SpotifyService.get_auth(current_user.spotify_refresh_token)
-      token = service['token']
-      refresh_token = service['refresh_token']
+      if service['refresh_token']
+        current_user.update_attribute(:refresh_token, service['refresh_token'])
+      end
+      token = service['access_token']
       current_user.update({
-        spotify_token: token,
-        spotify_refresh_token: refresh_token
-
+        spotify_token: token
         })
       flash[:success] = 'Connected to Spotify!'
       redirect_to '/profile'
