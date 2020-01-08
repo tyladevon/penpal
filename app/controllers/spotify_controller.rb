@@ -4,7 +4,7 @@ class SpotifyController < ApplicationController
     if current_user.spotify_token
       service = SpotifyService.get_auth(current_user.spotify_refresh_token)
       token = service['token']
-      refresh = service['refresh_token']
+      refresh_token = service['refresh_token']
       current_user.update({
         spotify_token: token,
         spotify_refresh_token: refresh_token
