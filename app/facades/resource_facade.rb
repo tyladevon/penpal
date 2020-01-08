@@ -11,7 +11,7 @@ class ResourceFacade
 
   def get_resource
     service = PenpalService.new
-    raw_data = service.get_suggestion
+    raw_data = service.get_suggestion(user_info)
     @suggestion = raw_data[:type]
     @resource = Object.const_get(raw_data[:type].capitalize).new(raw_data[:data], @user)
   end

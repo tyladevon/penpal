@@ -1,18 +1,19 @@
 class PenpalService
 
-  def get_suggestion
-    {type: 'music', data: { url: 'https://open.spotify.com/track/0dtuE679z6pgdEIMjgj26u?si=FMUDg1e2Sk24O6ZxptHBIA', song_name: 'Alive'}}
+  def get_suggestion(user_info)
+    get_json(user_info)
   end
 
   private
 
-    def conn
+    def conn(user_info)
       Faraday.new(ENV['PENPAL_URL']) do |f|
         f.adapter Faraday.default_adapter
+        f.params[:user_info] = user_info
       end
     end
 
-    def get_json
+    def get_json(user_info)
       response = conn.get
       JSON.parse(response.body)
     end
