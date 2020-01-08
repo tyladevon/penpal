@@ -1,7 +1,19 @@
 class PenpalService
 
   def get_suggestion
-    {type: 'activity', data: nil}
+    { type: 'activity', data: nil }
+    { type: 'buddy', data: nil }
+    { type: 'journal', data: nil }
+    { type: 'media', data: { url: '', alt_text: '' } }
+    { type: 'music',
+      data: {
+        song_name: '',
+        artist_name: '',
+        song_url: '',
+        image: '',
+        track_id: ''
+      }
+    }
   end
 
   private
