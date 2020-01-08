@@ -2,12 +2,11 @@
 
 <h1>Profile</h1>
 
-<p>Name: <%= current_user.first_name %>  <%= current_user.last_name %></p>
+<p>Name: <%= current_user.first_name + ' ' + current_user.last_name %></p>
 <p>Email: <%= current_user.email %> </p>
 
 
 <%= link_to 'Connect to Spotify', spotify_path %>
-
 
 <%= link_to 'Preferences', '/preferences' %>
 <%= link_to 'Buddies', '/buddies', method: :get %>

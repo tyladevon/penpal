@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 describe 'user can edit their profile' do
   it 'from profile edit link' do
     user = create(:user, survey?: true)

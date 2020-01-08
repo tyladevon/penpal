@@ -2,7 +2,6 @@
 
 <h1>My Support Buddies</h1>
 
-
 <% current_user.buddies.each do |buddy| %>
   <section id='buddy-<%= buddy.id %>'>
     <h3><%= buddy.first_name + ' ' + buddy.last_name %></h3>

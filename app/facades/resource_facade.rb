@@ -43,7 +43,6 @@ class ResourceFacade
       end.compact
     end
 
-
     def music_info
       @user.music_preferences.map do |preference|
         preference.genre

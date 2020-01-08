@@ -36,14 +36,13 @@ class BuddiesController < ApplicationController
 
   def destroy
     current_user.buddies.destroy(params[:id])
-
     flash[:success] = 'Buddy Deleted'
     redirect_to '/buddies'
   end
 
   private
 
-  def buddy_params
-    params.permit(:first_name, :last_name, :email, :phone_number)
-  end
+    def buddy_params
+      params.permit(:first_name, :last_name, :email, :phone_number)
+    end
 end
