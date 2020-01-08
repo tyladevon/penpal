@@ -4,7 +4,7 @@ class ResourceFacade
   def initialize(user)
     @user = user
   end
-  
+
   def new_entry
     @entry ||= @user.journal_entries.new
   end
@@ -20,10 +20,12 @@ class ResourceFacade
 
     def user_info
       {
-        current_feeling: @user.daily_feelings.last,
+        current_feeling: @user.daily_feelings.last.feeling,
         feeling_preferences: feeling_info,
+        resource_preferences: resource_info,
         music_preferences: music_info,
-        media_preferences: media_info
+        media_preferences: media_info,
+        spotify_tokn: @user.spotify_token
       }
     end
 
@@ -31,6 +33,14 @@ class ResourceFacade
       @user.feeling_preferences.map do|feeling_pref|
         feeling_pref.feeling
       end
+    end
+
+    def resource_info
+      preferences = ['music', 'activity', 'buddy', 'media', 'journal']
+      user_preferences = @user.resource_preference
+      preferences.map do |preference|
+        preference if user_preferences.send(preference)
+      end.compact
     end
 
 
@@ -42,13 +52,15 @@ class ResourceFacade
 
     def media_info
       media_info ||= @user.media_preference
-      {
-        dogs: media_info.dogs,
-        cats: media_info.cats,
-        babies: media_info.babies,
-        animals: media_info.animals,
-        celestial: media_info.celestial,
-        landscapes: media_info.landscapes
-      }
+      if media_info
+        {
+          dogs: media_info.dogs,
+          cats: media_info.cats,
+          babies: media_info.babies,
+          animals: media_info.animals,
+          celestial: media_info.celestial,
+          landscapes: media_info.landscapes
+        }
+      end
     end
 end
