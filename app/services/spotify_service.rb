@@ -7,15 +7,16 @@ class SpotifyService
   private
 
   def self.get_connection(refresh)
-    params = {
-      client_id: ENV['SPOTIFY_CLIENT_ID'],
-      client_secret: ENV['SPOTIFY_CLIENT_SECRET']
-    }
-    Faraday.post('https://accounts.spotify.com/api/token', params, { grant_type: 'authorization_code', code: refresh, redirect_uri: ENV['SPOTIFY_REDIRECT_URI'] } )
+    Faraday.post('https://accounts.spotify.com/api/token') do |f|
+      f.body = { grant_type: 'refresh_token', refresh_token: refresh }
+      f.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+      f.headers['Authorization'] = "#{ENV['SPOTIFY_REFRESH']}"
+    end
   end
 
   def self.get_json(refresh)
     response = self.get_connection(refresh)
+    binding.pry
   end
 
 end

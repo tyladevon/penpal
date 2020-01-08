@@ -3,7 +3,6 @@ class SpotifyController < ApplicationController
   def create
     if current_user.spotify_token
       service = SpotifyService.get_auth(current_user.spotify_refresh_token)
-      binding.pry
       token = service['token']
       refresh = service['refresh_token']
       current_user.update({
