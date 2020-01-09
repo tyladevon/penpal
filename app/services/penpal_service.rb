@@ -14,7 +14,7 @@ class PenpalService
     end
 
     def get_json(user_info)
-      response = conn.get
-      JSON.parse(response.body)
+      response = conn(user_info).get
+      JSON.parse(response.body, symbolize_names: true) 
     end
 end

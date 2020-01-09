@@ -1,19 +1,34 @@
 class Users::PreferencesController < ApplicationController
-  before_action :logged_in?
+  before_action :logged_in?, :spotify?
   def index; end
 
   def edit; end
 
   def update
-    destroy
-    update_feelings; update_music_preferences; update_activity_preferences
-    update_time_preferences; update_media_preferences; update_resource_preferences
+    if all_resources_checked?
+      destroy
+      update_feelings; update_music_preferences; update_activity_preferences
+      update_time_preferences; update_media_preferences; update_resource_preferences
+      flash[:success] = 'Preferences updated'
+      redirect_to '/preferences'
+    else
+      flash[:error] = 'Please select preferences for each category'
+      redirect_to '/preferences/edit'
+    end
 
-    flash[:success] = 'Preferences updated'
-    redirect_to '/preferences'
+
   end
 
   private
+
+    def all_resources_checked?
+      !params.require(:activity).permit!.to_h.all? { |k,v| v != '' } &&
+      !params.require(:music).permit!.to_h.all? { |k,v| v != '' } &&
+      params.keys.include?('media') &&
+      params.keys.include?('feelings') &&
+      params.keys.include?('time') &&
+      params.keys.include?('resources')
+    end
 
     def destroy
       current_user.feeling_preferences.destroy_all

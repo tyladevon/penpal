@@ -1,5 +1,5 @@
 class BuddiesController < ApplicationController
-  before_action :logged_in?, :survey_not_completed?
+  before_action :logged_in?, :survey_not_completed?, :spotify?
 
   def index; end
 

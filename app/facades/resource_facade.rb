@@ -11,7 +11,7 @@ class ResourceFacade
 
   def get_resource
     service = PenpalService.new
-    raw_data = service.get_suggestion(user_info)
+    raw_data = service.get_suggestion(user_info.to_json)
     @suggestion = raw_data[:type]
     @resource = Object.const_get(raw_data[:type].capitalize).new(raw_data[:data], @user)
   end
@@ -25,7 +25,7 @@ class ResourceFacade
         resource_preferences: resource_info,
         music_preferences: music_info,
         media_preferences: media_info,
-        spotify_tokn: @user.spotify_token
+        spotify_token: @user.spotify_token
       }
     end
 
