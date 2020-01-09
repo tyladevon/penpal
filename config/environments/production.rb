@@ -93,18 +93,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_job.queue_adapter = :sidekiq
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
 
+  config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { :host => "penpal-boost.herokuapp.com" }
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.sendgrid.net',
-    port:                 '587',
-    domain:               'penpal-boost.herokuapp.com',
-    user_name:            ENV["SENDGRID_USERNAME"],
-    password:             ENV["SENDGRID_PASSWORD"],
-    authentication:       'plain',
-    enable_starttls_auto: true
+     address:              'smtp.sendgrid.net',
+     port:                 '587',
+     domain:               'penpal-boost.herokuapp.com',
+     user_name:            ENV["SENDGRID_USERNAME"],
+     password:             ENV["SENDGRID_PASSWORD"],
+     authentication:       'plain',
+     enable_starttls_auto: true
   }
 end
