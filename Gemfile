@@ -63,6 +63,7 @@ group :development, :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'launchy'
+  gem 'listen'
 end
 
 group :development do
