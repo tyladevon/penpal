@@ -25,5 +25,4 @@ class ApplicationController < ActionController::Base
       redirect_to spotify_path
     end
   end
-
 end
