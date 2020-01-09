@@ -9,6 +9,7 @@ describe "user can receive an activity resource" do
     stub_user(user)
 
     allow_any_instance_of(ResourceFacade).to receive(:suggestion).and_return("activity")
+    allow_any_instance_of(ResourceFacade).to receive(:get_resource).and_return(activ)
 
     activity = Activity.new(nil, user)
     allow_any_instance_of(ResourceFacade).to receive(:resource).and_return(activity)
