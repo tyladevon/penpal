@@ -1,2 +1,28 @@
-@import 'bootstrap-sprockets';
+/*
+*= require_tree .
+*= require_self
+*/
+
 @import 'bootstrap';
+
+// nav {
+//
+// }
+
+body {
+  font-family: verdana;
+  background-color:  #00BFFF;
+  color: #F0F8FF;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: #ff6666;
+}

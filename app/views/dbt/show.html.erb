@@ -16,7 +16,7 @@
       <section id='journal-entry'>
       <%= form_for @entry do |f| %>
         <p>
-          <%= f.text_area(:entry, size: '100x20') %>
+          <%= f.text_area(:entry, size: '65x15') %>
         </p>
         <p>
           <%= f.submit 'Save', method: :post %>
