@@ -11,12 +11,15 @@ class BoostController < ApplicationController
       facade = ResourceFacade.new(current_user)
       facade.get_resource
       session[:suggestion] = facade.suggestion
-      render locals: { resource_facade: facade }
+        if session[:suggestion] == 'music' && current_user.spotify_token == nil
+          flash[:error] = 'Please sign-in to a spotify premium account to get a song suggestion'
+          redirect_to spotify_path
+        elsif session[:suggestion] == 'buddy' && current_user.buddies.empty? 
+          flash[:error] = 'Pleaese add a buddy to get a buddy suggestion'
+          redirect_to '/buddies/new'
+        else
+          render locals: { resource_facade: facade }
+        end
     end
-    if session[:suggestion] = 'music'
-      @accounts = Spotify::Accounts.new
-      @session = Spotify::Accounts::Session.from_refresh_token(@accounts, current_user.spotify_refresh_token)
-      @sdk = Spotify::SDK.new(@session)
-    end 
   end
 end
