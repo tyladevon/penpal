@@ -3,7 +3,12 @@ require "rails_helper"
 RSpec.describe BuddyMailer, type: :mailer do
   before(:each) do
     @user = create(:user, email: 'testing@testing.com')
-    @buddy = @user.buddies.create(first_name: 'Greg', last_name: 'Mitchell', email: 'george_michael@mail.com', phone_number: '3035552424')
+    @buddy = @user.buddies.create(
+      first_name: 'Greg',
+      last_name: 'Mitchell',
+      email: 'george_michael@mail.com',
+      phone_number: '3035552424'
+    )
   end
 
   describe 'sends activation email' do
@@ -21,6 +26,5 @@ RSpec.describe BuddyMailer, type: :mailer do
       expect(mail.body.encoded).to match("to you in times of need.")
       expect(mail.body.encoded).to match("Friends are medicine for a wounded heart and vitamins for a hopeful soul.")
     end
-
   end
 end

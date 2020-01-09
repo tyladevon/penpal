@@ -34,6 +34,7 @@ describe 'As a registered user' do
       expect(page).to have_content('3035552424')
     end
   end
+
   it 'adding a buddy sends the buddy an email' do
     ActionMailer::Base.deliveries = []
     user = create(:user, survey?: true)
@@ -57,5 +58,4 @@ describe 'As a registered user' do
 
     expect(page).to have_content('Email sent to buddy!')
   end
-
 end

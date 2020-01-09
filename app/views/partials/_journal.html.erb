@@ -1,13 +1,12 @@
-<h3>Journal about how you're feeling, then click save.</h3>
+<p>Journal about whatever comes up for you, then click save.</p>
 <section id='journal-entry'>
 
   <%= form_for resource_facade.new_entry, url: '/journal_entries?resource=true' do |f| %>
     <p>
-      <%= f.label :entry %>
       <%= f.text_area(:entry, size: '100x20') %>
     </p>
     <p>
-      <%= f.submit 'Save Entry', method: :post %>
+      <%= f.submit 'Save', method: :post %>
     </p>
   <% end %>
 </section>

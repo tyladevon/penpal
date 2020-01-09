@@ -1,5 +1,5 @@
 class Users::PreferencesController < ApplicationController
-  before_action :logged_in? 
+  before_action :logged_in?
   def index; end
 
   def edit; end

@@ -1,5 +1,6 @@
 class SurveyController < ApplicationController
   before_action :completed?, :logged_in?
+
   def index; end
 
   def create
