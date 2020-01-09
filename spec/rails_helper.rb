@@ -20,7 +20,6 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<SPOTIFY_TEST_TOKEN>") { ENV['SPOTIFY_TEST_TOKEN'] }
-  config.filter_sensitive_data("<GITHUB_TEST_TOKEN>") { ENV['GITHUB_TEST_TOKEN'] }
 end
 
 # Prevent database truncation if the environment is production

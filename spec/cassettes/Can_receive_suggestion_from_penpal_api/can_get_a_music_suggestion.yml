@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Content-Length:
-      - '215'
+      - '206'
       X-Xss-Protection:
       - 1; mode=block
       X-Content-Type-Options:
@@ -34,8 +34,7 @@ http_interactions:
       - thin 1.5.1 codename Straight Razor
     body:
       encoding: UTF-8
-      string: '{"type":"music","data":{"url":"https://open.spotify.com/track/4oDZ5L8izBals6jKBJDBcX","song_name":"Your
-        Love","artist_name":"The Outfield","image":"https://i.scdn.co/image/ab67616d00001e02d8b8307316208d35b9d7094d"}}'
+      string: '{"type":"music","data":{"url":"https://open.spotify.com/track/29wJiSQcze8HEmxkUQykyp","song_name":"Carrie","artist_name":"Europe","image":"https://i.scdn.co/image/ab67616d00001e022d925cec3072ed1b74e5188f"}}'
     http_version: 
-  recorded_at: Thu, 09 Jan 2020 18:49:58 GMT
+  recorded_at: Thu, 09 Jan 2020 20:42:02 GMT
 recorded_with: VCR 5.0.0

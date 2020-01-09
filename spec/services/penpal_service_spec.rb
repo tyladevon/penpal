@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Can receive suggestion from penpal api' do
-  it 'can get a journal suggestion' do
+  it 'can get a journal suggestion', :vcr do
     user = create(:user, survey?: true )
 
     journal = PenpalService.get_suggestion({
@@ -19,7 +19,7 @@ describe 'Can receive suggestion from penpal api' do
     expect(journal[:data]).to eq(nil)
 
   end
-  it 'can get a buddy suggestion' do
+  it 'can get a buddy suggestion', :vcr do
     user = create(:user, survey?: true )
 
     buddy = PenpalService.get_suggestion({
@@ -37,7 +37,7 @@ describe 'Can receive suggestion from penpal api' do
     expect(buddy[:data]).to eq(nil)
 
   end
-  it 'can get a activity suggestion' do
+  it 'can get a activity suggestion', :vcr do
     user = create(:user, survey?: true )
 
     activity = PenpalService.get_suggestion({
@@ -55,7 +55,7 @@ describe 'Can receive suggestion from penpal api' do
     expect(activity[:data]).to eq(nil)
 
   end
-  it 'can get a media suggestion' do
+  it 'can get a media suggestion', :vcr do
     user = create(:user, survey?: true )
 
     media = PenpalService.get_suggestion({
