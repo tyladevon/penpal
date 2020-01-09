@@ -20,6 +20,8 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
+  config.default_cassette_options = { :match_requests_on => [:method,
+  VCR.request_matchers.uri_without_param(:access_token, :apikey, :key)] }
   config.filter_sensitive_data("<SPOTIFY_TEST_TOKEN>") { ENV['SPOTIFY_TEST_TOKEN'] }
 end
 
