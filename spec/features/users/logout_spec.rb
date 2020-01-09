@@ -9,7 +9,7 @@ describe 'As a registered user' do
 
     visit landing_path
 
-      click_button 'Logout'
+      click_on 'Logout'
 
     expect(page).to have_content('Logout Successful')
   end
