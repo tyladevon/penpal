@@ -98,6 +98,5 @@ describe 'User can fill out the survey' do
     expect(user.resource_preference[:music]).to eq(false)
     expect(user.resource_preference[:media]).to eq(false)
     expect(user.resource_preference[:activity]).to eq(true)
-
   end
 end
