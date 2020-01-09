@@ -61,9 +61,9 @@ describe 'User can fill out the survey' do
     check 'Down'
     check 'Before bed'
     check 'Perform an activity I enjoy'
-    check 'Folk/Indie'
-    check 'Dogs'
-    check 'Celestial'
+    check 'Rock'
+    check 'Cats'
+    check 'Landscapes'
     fill_in 'activity[activity_1]', with: 'Swimming'
     fill_in 'activity[activity_2]', with: 'Coloring'
 
@@ -79,11 +79,16 @@ describe 'User can fill out the survey' do
     expect(feelings).to include('sad')
     expect(feelings).to include('down')
 
-    expect(user.media_preference).to eq(nil)
+    expect(user.media_preference[:dogs]).to eq(false)
+    expect(user.media_preference[:celestial]).to eq(false)
+
+    expect(user.media_preference[:cats]).to eq(true)
+    expect(user.media_preference[:landscapes]).to eq(true)
+
 
     expect(user.time_preference[:before_bed]).to eq(true)
 
-    expect(user.music_preferences).to eq([])
+    expect(user.music_preferences.first.genre).to eq('rock')
 
     activities = user.activity_preferences.map do |pref|
       pref.description
@@ -93,6 +98,5 @@ describe 'User can fill out the survey' do
     expect(user.resource_preference[:music]).to eq(false)
     expect(user.resource_preference[:media]).to eq(false)
     expect(user.resource_preference[:activity]).to eq(true)
-
   end
 end

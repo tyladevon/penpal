@@ -60,7 +60,6 @@ group :development, :test do
   gem 'awesome_print'
   gem 'webmock'
   gem 'simplecov'
-  gem 'vcr'
   gem 'webdrivers'
   gem 'launchy'
 end
