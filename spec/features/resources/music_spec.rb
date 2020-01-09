@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "user can receive a music resource" do
   it "displays song url", :vcr do
-    user = create(:user, survey?: true)
+    user = create(:user, survey?: true, spotify_token: ENV['SPOTIFY_TEST_TOKEN']) 
     stub_user(user)
 
     allow_any_instance_of(ResourceFacade).to receive(:suggestion).and_return("music")
