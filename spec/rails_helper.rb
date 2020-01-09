@@ -8,20 +8,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 
 require 'rspec/rails'
-require 'vcr'
 require 'webmock/rspec'
 require 'sidekiq/testing'
 
 Sidekiq::Testing.fake!
 
-VCR.configure do |config|
-  config.ignore_localhost = true
-  config.cassette_library_dir = 'spec/cassettes'
-  config.hook_into :webmock
-  config.configure_rspec_metadata!
-  config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
-  config.filter_sensitive_data("<GITHUB_TEST_TOKEN>") { ENV['GITHUB_TEST_TOKEN'] }
-end
 
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
@@ -98,6 +89,15 @@ def stub_omniauth
                first_name: 'Huck',
                last_name: 'Finn'
              },
+    :credentials => { token: '123123',
+                      refresh_token: '1242453593',
+                      expires_at: DateTime.now }
+          })
+end
+def stub_spotify_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({
+    :provider => 'spotify',
     :credentials => { token: '123123',
                       refresh_token: '1242453593',
                       expires_at: DateTime.now }

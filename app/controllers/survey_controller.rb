@@ -4,25 +4,33 @@ class SurveyController < ApplicationController
   def index; end
 
   def create
-    create_resource_preferences
-    if music?
+    if all_resources_checked?
+      create_resource_preferences
       create_music_preferences
-    end
-    if media?
       create_media_preferences
-    end
-    if activity?
       create_activity_preferences
-    end
-    create_feelings
-    create_time_preferences
-    current_user.update(survey?: true)
-    flash[:success] = 'Preferences saved'
+      create_feelings
+      create_time_preferences
+      current_user.update(survey?: true)
+      flash[:success] = 'Preferences saved'
 
-    redirect_to '/landing'
+      redirect_to '/landing'
+    else
+      flash[:error] = 'Please select preferences for each category'
+      redirect_to survey_path
+    end
   end
 
   private
+
+    def all_resources_checked?
+      !params.require(:activity).permit!.to_h.all? { |k,v| v != '' } &&
+      !params.require(:music).permit!.to_h.all? { |k,v| v != '' } &&
+      params.keys.include?('media') &&
+      params.keys.include?('feelings') &&
+      params.keys.include?('time') &&
+      params.keys.include?('resources')
+    end
 
     def create_feelings
       feeling_params.values.each do |feel|
@@ -65,18 +73,6 @@ class SurveyController < ApplicationController
       media_params.values.each do |media|
         media_preference.update_attribute(media, true)
       end
-    end
-
-    def music?
-      music_params.values.any? {|genre| genre != '' } && resource_params.values.include?('music')
-    end
-
-    def activity?
-      activity_params.values.any? {|description| description != '' } && resource_params.values.include?('activity')
-    end
-
-    def media?
-      !media_params.empty? && resource_params.values.include?('media')
     end
 
     def music_params

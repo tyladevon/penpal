@@ -1,31 +1,20 @@
 class PenpalService
 
-  def get_suggestion
-    # { type: 'activity', data: nil }
-    # { type: 'buddy', data: nil }
-    # { type: 'journal', data: nil }
-    # # { type: 'media', data: { url: '', alt_text: '' } }
-    { type: 'music',
-      data: {
-        song_name: 'Alive',
-        artist_name: '',
-        song_url: 'https://open.spotify.com/track/0dtuE679z6pgdEIMjgj26u?si=FMUDg1e2Sk24O6ZxptHBIA',
-        image: '',
-        track_id: ''
-      }
-    }
+  def self.get_suggestion(user_info)
+    get_json(user_info)
   end
 
   private
 
-    def conn
+    def self.conn(user_info)
       Faraday.new(ENV['PENPAL_URL']) do |f|
         f.adapter Faraday.default_adapter
+        f.params[:user_info] = user_info
       end
     end
 
-    def get_json
-      response = conn.get
-      JSON.parse(response.body)
+    def self.get_json(user_info)
+      response = self.conn(user_info).get
+      JSON.parse(response.body, symbolize_names: true)
     end
 end
