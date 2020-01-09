@@ -46,7 +46,7 @@ gem 'oauth2'
 gem 'omniauth-spotify'
 gem 'omniauth-google-oauth2'
 gem 'google-api-client'
-gem 'sidekiq'
+gem 'sidekiq', '~> 4.0.1'
 gem 'sendgrid-ruby'
 gem 'spotify-ruby'
 
