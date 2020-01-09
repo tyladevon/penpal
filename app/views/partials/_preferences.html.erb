@@ -1,5 +1,5 @@
 <%= form_tag path, method: method do %>
-  <h3>I want Penpal to help me because often I feel: </h3>
+  <h5>I often feel: </h5>
   <%= label_tag "feelings[sad]", "Sad" %>
   <%= check_box_tag "feelings[sad]", "sad" %>
   <%= label_tag "feelings[down]", "Down" %>
@@ -11,7 +11,7 @@
   <%= label_tag "feelings[mad]", "Mad" %>
   <%= check_box_tag "feelings[mad]", "mad" %>
 
-  <h3>I notice that I feel this way more often: </h3>
+  <h5>I notice that I feel this way more often: </h5>
   <%= label_tag "time[morning]", "In the morning" %>
   <%= check_box_tag "time[morning]", "morning" %>
   <%= label_tag "time[mid-day]", "Mid-day" %>
@@ -21,7 +21,7 @@
   <%= label_tag "time[random]", "Random times" %>
   <%= check_box_tag "time[random]", "random" %>
 
-  <h3>When I feel this way, it can be helpful to: </h3>
+  <h5>When I feel this way, it can be helpful to: </h5>
   <%= label_tag "resources[music]", "Listen to my favorite music" %>
   <%= check_box_tag "resources[music]", "music" %>
   <%= label_tag "resources[activity]", "Perform an activity I enjoy" %>
@@ -33,7 +33,7 @@
   <%= label_tag "resources[journal]", "Journal" %>
   <%= check_box_tag "resources[journal]", "journal" %>
 
-  <h3>My favorite music is: </h3>
+  <h5>My favorite music genre is: </h5>
   <%= label_tag "music[rock]", "Rock" %>
   <%= check_box_tag "music[rock]", "rock" %>
   <%= label_tag "music[r&b-soul]", "R&B/Soul" %>
@@ -44,7 +44,7 @@
   <%= text_field_tag "music[custom]" %>
   <%= text_field_tag "music[custom_2]" %>
 
-  <h3>I love looking at: </h3>
+  <h5>I love looking at these types of images: </h5>
   <%= label_tag "media[dogs]", "Dogs" %>
   <%= check_box_tag "media[dogs]", "dogs" %>
   <%= label_tag "media[cats]", "Cats" %>
@@ -58,7 +58,7 @@
   <%= label_tag "media[celestial]", "Celestial" %>
   <%= check_box_tag "media[celestial]", "celestial" %>
 
-  <h3>Other activities I enjoy include: </h3>
+  <h5>Please fill in the following with activities that you enjoy doing: </h5>
   <%= label_tag "activities" %>
   <%= text_area_tag "activity[activity_1]" %>
   <%= text_area_tag "activity[activity_2]" %>

@@ -4,7 +4,7 @@ class PenpalService
     # { type: 'activity', data: nil }
     # { type: 'buddy', data: nil }
     # { type: 'journal', data: nil }
-    # { type: 'media', data: { url: '', alt_text: '' } }
+    # # { type: 'media', data: { url: '', alt_text: '' } }
     { type: 'music',
       data: {
         song_name: 'Alive',
