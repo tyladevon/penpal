@@ -3,8 +3,9 @@ require 'rails_helper'
 describe 'As a registered user' do
   it 'it can add a support buddy' do
     user = create(:user, survey?: true)
-    stub_user(user)
 
+    ResourcePreference.create(user_id: user.id, buddy: true)
+    stub_user(user)
     visit profile_path
 
     click_link 'Buddies'
@@ -36,12 +37,12 @@ describe 'As a registered user' do
   it 'adding a buddy sends the buddy an email' do
     ActionMailer::Base.deliveries = []
     user = create(:user, survey?: true)
-    stub_user(user)
+    ResourcePreference.create(user_id: user.id, buddy: true)
 
+    stub_user(user)
     visit profile_path
 
     click_link 'Buddies'
-
     expect(current_path).to eq('/buddies')
 
     click_button 'Add a Buddy'
@@ -53,9 +54,6 @@ describe 'As a registered user' do
     fill_in :email, with: 'george_michael@mail.com'
     fill_in :phone_number, with: '3035552424'
     click_button 'Add Buddy'
-
-    # last_email = ActionMailer::Base.deliveries.last
-    # expect(last_email.to).to include('george_michael@mail.com')
 
     expect(page).to have_content('Email sent to buddy!')
   end

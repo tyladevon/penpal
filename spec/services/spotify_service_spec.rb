@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 describe 'SpotifyService can make api call' do
-  it 'can get a user token and refresh token', :vcr do
-    user = create(:user, survey?: true, spotify_refresh_token: 'akgngnkr')
+  it 'can get a user token and refresh token' do
+    user = create(:user, survey?: true )
+    stub_spotify_omniauth
 
+    expect(user.spotify_token).to_not eq('')
+    expect(user.spotify_refresh_token).to_not eq('')
   end
 end

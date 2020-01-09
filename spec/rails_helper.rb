@@ -103,6 +103,15 @@ def stub_omniauth
                       expires_at: DateTime.now }
           })
 end
+def stub_spotify_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new({
+    :provider => 'spotify',
+    :credentials => { token: '123123',
+                      refresh_token: '1242453593',
+                      expires_at: DateTime.now }
+          })
+end
 
 def stub_invalid_omniauth
   OmniAuth.config.test_mode = true

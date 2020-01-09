@@ -10,8 +10,7 @@ class ResourceFacade
   end
 
   def get_resource
-    service = PenpalService.new
-    raw_data = service.get_suggestion(user_info.to_json)
+    raw_data = PenpalService.get_suggestion(user_info.to_json)
     @suggestion = raw_data[:type]
     @resource = Object.const_get(raw_data[:type].capitalize).new(raw_data[:data], @user)
   end
@@ -51,6 +50,7 @@ class ResourceFacade
     end
 
     def media_info
+      return nil if !@user.media_preference
       media_info ||= @user.media_preference
       if media_info
         {
