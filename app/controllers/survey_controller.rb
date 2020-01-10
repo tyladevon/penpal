@@ -24,7 +24,6 @@ class SurveyController < ApplicationController
   private
 
     def all_resources_checked?
-      require "pry"; binding.pry
       !params.require(:activity).permit!.to_h.all? { |k,v| v == '' } &&
       !params.require(:music).permit!.to_h.all? { |k,v| v == '' } &&
       params.keys.include?('media') &&
