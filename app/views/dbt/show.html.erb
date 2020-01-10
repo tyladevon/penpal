@@ -12,7 +12,7 @@
 
   <% if session[:suggestion] != 'journal' %>
     <h4>Journal about whatever comes up for you, then click save.</h4>
-    <p>Don't want to journal? That's okay. Type 'I don't want to journal today.'</p>
+    <p>Don't want to journal? That's okay. Just click the 'Home' button</p>
       <section id='journal-entry'>
       <%= form_for @entry do |f| %>
         <p>
@@ -23,5 +23,6 @@
         </p>
       <% end %>
       </section>
-    <% end %>
+  <% end %>
+  <%= link_to 'Home', '/landing' %>
 </center>
