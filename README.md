@@ -10,6 +10,10 @@ PenPal is intended to support users in times when they are feeling down, unmotiv
 ## Purpose
 Object Oriented Programing principles, Restful Routing, Test Driven Development, Behavior Driven Development, Authenticated API calls, OAuth process
 
+## Welcome Page Demo
+
+![PenPal Welcome Page Demo](https://user-images.githubusercontent.com/50811220/72157621-4ac66c80-33b0-11ea-8105-67699afd1607.gif)
+
 ## Installation
 1. Clone down this and the micro-service repo into a directory of your choice
 ```
