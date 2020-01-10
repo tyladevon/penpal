@@ -9,11 +9,11 @@ describe 'As a registered user' do
 
     visit landing_path
 
-    click_button 'Profile'
+    click_on 'Profile'
 
     expect(current_path).to eq(profile_path)
 
-    click_button 'Delete Account'
+    click_on 'Delete Account'
 
     expect(page).to have_content('Account deleted.')
   end
