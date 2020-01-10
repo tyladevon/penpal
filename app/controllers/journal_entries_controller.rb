@@ -1,4 +1,8 @@
 class JournalEntriesController < ApplicationController
+
+  def index
+    @entries = current_user.journal_entries.all
+  end
   def create
     new_entry = current_user.journal_entries.new
     new_entry.update(journal_params)
