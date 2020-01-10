@@ -13,7 +13,6 @@
         </header>
        <% if @journal_complete == true %>
          <p>Great journal entry!</p>
-         <%= link_to 'Home', '/landing' %>
         <% else %>
           <main class='boost-main'>
             <%= render partial: "partials/#{resource_facade.suggestion}", locals: {resource_facade: resource_facade} %>
