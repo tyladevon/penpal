@@ -65,7 +65,7 @@ Environment variables and required API keys/tokens:
 
 ## Database / Schema Diagram
 
-<img width="1140" alt="Screen Shot 2020-01-04 at 12 28 46 PM" src="https://user-images.githubusercontent.com/50811220/72127443-986ab700-3367-11ea-88a4-0dfdf8487c6f.png">
+<img width="947" alt="Screen Shot 2020-01-09 at 8 30 49 PM" src="https://user-images.githubusercontent.com/50811220/72127545-f39ca980-3367-11ea-8ee6-aa78902a7dec.png">
 
 ## Testing
 
