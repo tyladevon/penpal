@@ -24,8 +24,8 @@ class SurveyController < ApplicationController
   private
 
     def all_resources_checked?
-      !params.require(:activity).permit!.to_h.all? { |k,v| v != '' } &&
-      !params.require(:music).permit!.to_h.all? { |k,v| v != '' } &&
+      !params.require(:activity).permit!.to_h.all? { |k,v| v == '' } &&
+      !params.require(:music).permit!.to_h.all? { |k,v| v == '' } &&
       params.keys.include?('media') &&
       params.keys.include?('feelings') &&
       params.keys.include?('time') &&
